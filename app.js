@@ -1,9 +1,6 @@
-let numeroSecreto = 0;
+
 let fase = 0;
-let listaNumerosSorteados = [];
-let numeroMaximo = 10;
 let carta = []
-const palo = ["ESPADA", "BASTO","ORO", "COPA"];
 const numero=[1,2,3,4,5,6,7,8,9,10,11,12];
 const guerracosa = ["GUERRA", "COSA"];
 const guerra = ["ESPADA", "BASTO"];
@@ -21,75 +18,16 @@ function asignarTextoElemento(elemento, texto) {
     return;
 }
 
-function verificarIntento() {
-    let numeroDeUsuario =
-parseInt(document.getElementById('valorUsuario').value);
-
-    if (numeroDeUsuario === numeroSecreto) {
-        asignarTextoElemento('p',`Acertaste el número en ${intentos}
-${(intentos === 1) ? 'vez' : 'veces'}`);
-        document.getElementById('reiniciar').removeAttribute('disabled');
-    } else {
-        //El usuario no acertó.
-        if (numeroDeUsuario > numeroSecreto) {
-            asignarTextoElemento('p','El número secreto es menor');
-        } else {
-            asignarTextoElemento('p','El número secreto es mayor');
-        }
-        intentos++;
-        limpiarCaja();
-    }
-    return;
-}
-
-function limpiarCaja() {
-    document.querySelector('#valorUsuario').value = '';
-}
-
-function generarNumeroSecreto() {
-    //let numeroGenerado1 =  Math.floor(Math.random()*4)+1;
-    let numeroGenerado =  Math.floor(Math.random()*4)+1
-
-    console.log(numeroGenerado);
-   // console.log(listaNumerosSorteados);
-    //Si ya sorteamos todos los números
-    //if (listaNumerosSorteados.length == numeroMaximo) {
-    //    asignarTextoElemento('p','Ya se sortearon todos los números
-//posibles');
-    //} else {
-    //    //Si el numero generado está incluido en la lista
-    //    if (listaNumerosSorteados.includes(numeroGenerado)) {
-    /*        return generarNumeroSecreto();
-        } else {
-            listaNumerosSorteados.push(numeroGenerado);*/
-            return numeroGenerado;
-/*        }
-    }*/
-}
-
 function condicionesIniciales() {
     asignarTextoElemento('h1','Juego de guerra o cosa');
     asignarTextoElemento('p',`Elije Guerra o Cosa`);
-    //numeroSecreto = generarNumeroSecreto();
     fase = 1;
     carta=elegirValores(palo,numero)
     console.log(carta);
-    document.querySelector('#reiniciar').setAttribute('disabled','true');
     document.getElementById('espada').style.display="none";
     document.getElementById('basto').style.display="none";
     document.getElementById('oro').style.display="none";
     document.getElementById('copa').style.display="none";
-}
-
-function reiniciarJuego() {
-    //limpiar caja
-    limpiarCaja();
-    //Indicar mensaje de intervalo de números
-    //Generar el número aleatorio
-    //Inicializar el número intentos
-    condicionesIniciales();
-    //Deshabilitar el botón de nuevo juego
-
 }
 
 function elegirValor() {
