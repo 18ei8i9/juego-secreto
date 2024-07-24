@@ -33,6 +33,19 @@ function condicionesIniciales() {
     document.getElementById('impar').style.display="none";
     document.getElementById('alta').style.display="none";
     document.getElementById('baja').style.display="none";
+    document.getElementById('1').style.display="none";
+    document.getElementById('2').style.display="none";
+    document.getElementById('3').style.display="none";
+    document.getElementById('4').style.display="none";
+    document.getElementById('5').style.display="none";
+    document.getElementById('6').style.display="none";
+    document.getElementById('7').style.display="none";
+    document.getElementById('8').style.display="none";
+    document.getElementById('9').style.display="none";
+    document.getElementById('10').style.display="none";
+    document.getElementById('11').style.display="none";
+    document.getElementById('12').style.display="none";
+    
 }
 
 function elegirValor() {
@@ -92,6 +105,29 @@ function compararConArrayAnterior(arrayActual) {
         console.log('Array anterior:', carta);
         fase++;
         console.log(fase);
+        if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, baja)){
+            document.getElementById('2').style.display="block";
+            document.getElementById('4').style.display="block";
+            document.getElementById('6').style.display="block";
+            
+            
+        }else if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, alta)){
+            document.getElementById('8').style.display="block";
+            document.getElementById('10').style.display="block";
+            document.getElementById('12').style.display="block";
+
+        }else if(tienenValoresIguales(carta, impar) & tienenValoresIguales(carta, baja)){
+            document.getElementById('1').style.display="block";
+            document.getElementById('3').style.display="block";
+            document.getElementById('5').style.display="block";
+
+
+        }else{
+            document.getElementById('7').style.display="block";
+            document.getElementById('9').style.display="block";
+            document.getElementById('11').style.display="block";
+
+        }
 
     }
 }

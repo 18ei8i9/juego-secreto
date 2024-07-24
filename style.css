@@ -64,7 +64,7 @@ body::before {
     margin-top: 2rem;
 }
 
-.container__boton:disabled {
+.container__boton:enabled {
     background: #898989;
 }
 
