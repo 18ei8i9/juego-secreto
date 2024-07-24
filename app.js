@@ -2,7 +2,7 @@
 let fase = 0;
 let carta = []
 const numero=[1,2,3,4,5,6,7,8,9,10,11,12];
-const palo = ["GUERRA", "COSA","ESPADA", "BASTO"];
+const palo = ["ORO", "COPA","ESPADA", "BASTO"];
 const guerracosa = ["GUERRA", "COSA"];
 const guerra = ["ESPADA", "BASTO"];
 const cosa = ["ORO", "COPA"];
@@ -144,6 +144,10 @@ function compararConValor (valorPalo){
         fase++;
         console.log(fase);
         }
+    else if(buscaValor(carta,parseInt(valorPalo)) & fase==5 ){
+        console.log("ganaste");
+        alert("ganaste capoooo");
+    }
 }
 
 
