@@ -2,13 +2,14 @@
 let fase = 0;
 let carta = []
 const numero=[1,2,3,4,5,6,7,8,9,10,11,12];
+const palo = ["GUERRA", "COSA","ESPADA", "BASTO"];
 const guerracosa = ["GUERRA", "COSA"];
 const guerra = ["ESPADA", "BASTO"];
 const cosa = ["ORO", "COPA"];
 const par = [2,4,6,8,10,12];
 const impar = [1,3,5,7,9,11];
-const bajo = [1,2,3,4,5,6];
-const alto = [7,8,9,10,11,12];
+const baja = [1,2,3,4,5,6];
+const alta = [7,8,9,10,11,12];
 let valorBoton;
 let acierto;
 
@@ -28,6 +29,10 @@ function condicionesIniciales() {
     document.getElementById('basto').style.display="none";
     document.getElementById('oro').style.display="none";
     document.getElementById('copa').style.display="none";
+    document.getElementById('par').style.display="none";
+    document.getElementById('impar').style.display="none";
+    document.getElementById('alta').style.display="none";
+    document.getElementById('baja').style.display="none";
 }
 
 function elegirValor() {
@@ -62,17 +67,33 @@ function buscaValor(array,valorBuscado){
 }
 
 function compararConArrayAnterior(arrayActual) {
-        if (tienenValoresIguales(carta, arrayActual) & fase==1 ){
-            document.getElementById('guerra').style.display="none";
-            document.getElementById('cosa').style.display="none";
-            document.getElementById('espada').style.display="block";
-    document.getElementById('basto').style.display="block";
-    document.getElementById('oro').style.display="block";
-    document.getElementById('copa').style.display="block";
-    fase++;
-    console.log(fase);
+    if (tienenValoresIguales(carta, arrayActual) & fase==1 ){
+        document.getElementById('guerra').style.display="none";
+        document.getElementById('cosa').style.display="none";
+        document.getElementById('espada').style.display="block";
+        document.getElementById('basto').style.display="block";
+        document.getElementById('oro').style.display="block";
+        document.getElementById('copa').style.display="block";
+        fase++;
+        console.log(fase);
 
-}
+    }else if(tienenValoresIguales(carta, arrayActual) & fase==3 ){
+        document.getElementById('alta').style.display="block";
+        document.getElementById('baja').style.display="block";
+        document.getElementById('par').style.display="none";
+        document.getElementById('impar').style.display="none";
+        console.log('Array anterior:', carta);
+        fase++;
+        console.log(fase);
+
+    }else if(tienenValoresIguales(carta, arrayActual) & fase==4 ){
+        document.getElementById('alta').style.display="none";
+        document.getElementById('baja').style.display="none";
+        console.log('Array anterior:', carta);
+        fase++;
+        console.log(fase);
+
+    }
 }
 
 function compararConValor (valorPalo){
@@ -81,10 +102,12 @@ function compararConValor (valorPalo){
         document.getElementById('basto').style.display="none";
         document.getElementById('oro').style.display="none";
         document.getElementById('copa').style.display="none";
-        console.log('Resultado de la comparación:', acierto);
+        document.getElementById('par').style.display="block";
+        document.getElementById('impar').style.display="block";
         console.log('Array anterior:', carta);
-        console.log('Array actual:', arrayActual);
-    }
+        fase++;
+        console.log(fase);
+        }
 }
 
 
