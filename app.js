@@ -83,10 +83,12 @@ function compararConArrayAnterior(arrayActual) {
     if (tienenValoresIguales(carta, arrayActual) & fase==1 ){
         document.getElementById('guerra').style.display="none";
         document.getElementById('cosa').style.display="none";
+        if(tienenValoresIguales(guerra, arrayActual)){
         document.getElementById('espada').style.display="block";
-        document.getElementById('basto').style.display="block";
+        document.getElementById('basto').style.display="block";}
+        else if(tienenValoresIguales(cosa, arrayActual)){
         document.getElementById('oro').style.display="block";
-        document.getElementById('copa').style.display="block";
+        document.getElementById('copa').style.display="block";}
         fase++;
         console.log(fase);
 
