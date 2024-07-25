@@ -133,19 +133,11 @@ function compararConArrayAnterior(arrayActual) {
 }
 
 function compararConValor (valorPalo){
-    if(buscaValor(carta,valorPalo) & fase==2 & buscaValor(guerra,valorPalo)){
+    if(buscaValor(carta,valorPalo) & fase==2){
         document.getElementById('espada').style.display="none";
         document.getElementById('basto').style.display="none";
-        
-        document.getElementById('par').style.display="block";
-        document.getElementById('impar').style.display="block";
-        console.log('Array anterior:', carta);
-        fase++;
-        console.log(fase);
-        }
-    else if(buscaValor(carta,valorPalo) & fase==2 & buscaValor(cosa,valorPalo)){
-        document.getElementById('oro').style.display="none";
         document.getElementById('copa').style.display="none";
+        document.getElementById('oro').style.display="none";
         document.getElementById('par').style.display="block";
         document.getElementById('impar').style.display="block";
         console.log('Array anterior:', carta);
