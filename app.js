@@ -20,11 +20,13 @@ function asignarTextoElemento(elemento, texto) {
 }
 
 function condicionesIniciales() {
-    asignarTextoElemento('h1','Juego de guerra o cosa');
-    asignarTextoElemento('p',`Elije Guerra o Cosa`);
+    asignarTextoElemento('h1','xxxxxxxxx');
+    asignarTextoElemento('p',`xxxxxxxxx`);
     fase = 1;
     carta=elegirValores(palo,numero)
     console.log(carta);
+    document.getElementById('guerra').style.display="block";
+    document.getElementById('cosa').style.display="block";
     document.getElementById('espada').style.display="none";
     document.getElementById('basto').style.display="none";
     document.getElementById('oro').style.display="none";
@@ -131,6 +133,10 @@ function compararConArrayAnterior(arrayActual) {
 
         }
 
+    }else{
+        alert("perdiste gato");
+        condicionesIniciales();
+        
     }
 }
 
@@ -149,6 +155,9 @@ function compararConValor (valorPalo){
     else if(buscaValor(carta,parseInt(valorPalo)) & fase==5 ){
         console.log("ganaste");
         alert("ganaste capoooo");
+    }else{
+        alert("perdiste gato");
+        condicionesIniciales();
     }
 }
 
