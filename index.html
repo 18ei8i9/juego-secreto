@@ -21,11 +21,13 @@
                     <h1></h1>
                     <p class="texto__parrafo"></p>
                 </div>
-                
+                <input type="text" id="nombre" placeholder="Ingresa nombre" class="container__input">
                 <div class="chute container__botones">
-                    <input type="text" id="nombre" placeholder="Ingresa nombre">
-                    <button id="agregar">AGREGAR</button>
-                    <button id="terminar">TERMINAR</button>
+                    
+                    <button onclick="agregaJugador()"
+                    class="container__boton" id="agregar">AGREGAR</button>
+                    <button onclick="terminaCarga()"
+                    class="container__boton"id="terminar">TERMINAR</button>
                     <button onclick="compararConArrayAnterior(guerra)"
 class="container__boton" id="guerra" value="GUERRA"  >GUERRA</button>
                     <button onclick="compararConArrayAnterior(cosa)"

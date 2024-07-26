@@ -12,7 +12,7 @@ const baja = [1,2,3,4,5,6];
 const alta = [7,8,9,10,11,12];
 let valorBoton;
 let acierto;
-let jugadores;
+let jugadores=[];
 
 function asignarTextoElemento(elemento, texto) {
     let elementoHTML = document.querySelector(elemento);
@@ -21,16 +21,16 @@ function asignarTextoElemento(elemento, texto) {
 }
 
 function condicionesIniciales() {
-    asignarTextoElemento('h1','xxxxxxxxx');
-    asignarTextoElemento('p',`xxxxxxxxx`);
+    asignarTextoElemento('h1','GUERRA O COSA');
+    asignarTextoElemento('p',`INGRESE JUGADORES`);
     fase = 1;
     carta=elegirValores(palo,numero)
     console.log(carta);
     document.getElementById('nombre').style.display="block";
     document.getElementById('agregar').style.display="block";
     document.getElementById('terminar').style.display="block";
-    document.getElementById('guerra').style.display="block";
-    document.getElementById('cosa').style.display="block";
+    document.getElementById('guerra').style.display="none";
+    document.getElementById('cosa').style.display="none";
     document.getElementById('espada').style.display="none";
     document.getElementById('basto').style.display="none";
     document.getElementById('oro').style.display="none";
@@ -54,6 +54,25 @@ function condicionesIniciales() {
     
 }
 
+function agregaJugador(){
+    let nombre = document.getElementById("nombre").value;
+    if(nombre !==""){
+        jugadores.push(nombre);
+        document.getElementById('nombre').value = '';
+        console.log(jugadores);
+    }
+}
+function terminaCarga(){
+    document.getElementById('nombre').style.display="none";
+    document.getElementById('agregar').style.display="none";
+    document.getElementById('terminar').style.display="none";
+    document.getElementById('guerra').style.display="block";
+    document.getElementById('cosa').style.display="block";
+    console.log(jugadores);
+}
+
+
+
 function elegirValor() {
     const indiceAleatorio = Math.floor(Math.random() * valores.length);
     const valorElegido = valores[indiceAleatorio];
@@ -70,11 +89,6 @@ function elegirValores(array1, array2) {
     const valorElegido2 = array2[indiceAleatorio2];
 
     return [valorElegido1, valorElegido2];
-}
-
-function guardarValor(valor) {
-    valorBoton = valor;
-    console.log('Valor del botón:', valorBoton);
 }
 
 function tienenValoresIguales(arr1, arr2) {
