@@ -68,6 +68,7 @@ function terminaCarga(){
     document.getElementById('terminar').style.display="none";
     document.getElementById('guerra').style.display="block";
     document.getElementById('cosa').style.display="block";
+    asignarTextoElemento('p',`ELIGE GUERRA O COSA`);
     console.log(jugadores);
 }
 
@@ -104,15 +105,18 @@ function compararConArrayAnterior(arrayActual) {
         document.getElementById('guerra').style.display="none";
         document.getElementById('cosa').style.display="none";
         if(tienenValoresIguales(guerra, arrayActual)){
+            asignarTextoElemento('p',`ELIGE ESPADA O BASTO`);
         document.getElementById('espada').style.display="block";
         document.getElementById('basto').style.display="block";}
         else if(tienenValoresIguales(cosa, arrayActual)){
+            asignarTextoElemento('p',`ELIGE ORO O COPAS`);
         document.getElementById('oro').style.display="block";
         document.getElementById('copa').style.display="block";}
         fase++;
         console.log(fase);
 
     }else if(tienenValoresIguales(carta, arrayActual) & fase==3 ){
+        asignarTextoElemento('p',`ES UNA CARTA BAJA (1 AL 6) O ALTA (7 AL 12)?`);
         document.getElementById('alta').style.display="block";
         document.getElementById('baja').style.display="block";
         document.getElementById('par').style.display="none";
@@ -122,6 +126,7 @@ function compararConArrayAnterior(arrayActual) {
         console.log(fase);
 
     }else if(tienenValoresIguales(carta, arrayActual) & fase==4 ){
+        asignarTextoElemento('p',`DALE CRACK ARRIESGA QUE YA ES TUYO!!!`);
         document.getElementById('alta').style.display="none";
         document.getElementById('baja').style.display="none";
         console.log('Array anterior:', carta);
@@ -152,7 +157,7 @@ function compararConArrayAnterior(arrayActual) {
         }
 
     }else{
-        alert("perdiste gato");
+        alert("PERDISTE");
         condicionesIniciales();
         
     }
@@ -160,6 +165,7 @@ function compararConArrayAnterior(arrayActual) {
 
 function compararConValor (valorPalo){
     if(buscaValor(carta,valorPalo) & fase==2){
+        asignarTextoElemento('p',`ES PAR O IMPAR`);
         document.getElementById('espada').style.display="none";
         document.getElementById('basto').style.display="none";
         document.getElementById('copa').style.display="none";
@@ -172,9 +178,9 @@ function compararConValor (valorPalo){
         }
     else if(buscaValor(carta,parseInt(valorPalo)) & fase==5 ){
         console.log("ganaste");
-        alert("ganaste capoooo");
+        alert("VAAAAAAAAMOOOOOOO CAPOOOOOOO");
     }else{
-        alert("perdiste gato");
+        alert("PERDSTE GATO");
         condicionesIniciales();
     }
 }
