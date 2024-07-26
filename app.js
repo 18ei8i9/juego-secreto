@@ -12,6 +12,7 @@ const baja = [1,2,3,4,5,6];
 const alta = [7,8,9,10,11,12];
 let valorBoton;
 let acierto;
+let jugadores;
 
 function asignarTextoElemento(elemento, texto) {
     let elementoHTML = document.querySelector(elemento);
@@ -25,6 +26,9 @@ function condicionesIniciales() {
     fase = 1;
     carta=elegirValores(palo,numero)
     console.log(carta);
+    document.getElementById('nombre').style.display="block";
+    document.getElementById('agregar').style.display="block";
+    document.getElementById('terminar').style.display="block";
     document.getElementById('guerra').style.display="block";
     document.getElementById('cosa').style.display="block";
     document.getElementById('espada').style.display="none";
