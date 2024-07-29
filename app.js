@@ -13,6 +13,8 @@ const alta = [7,8,9,10,11,12];
 let valorBoton;
 let acierto;
 let jugadores=[];
+let turno;
+let elecciones=[];
 
 function asignarTextoElemento(elemento, texto) {
     let elementoHTML = document.querySelector(elemento);
@@ -70,6 +72,8 @@ function terminaCarga(){
     document.getElementById('cosa').style.display="block";
     asignarTextoElemento('p',`ELIGE GUERRA O COSA`);
     console.log(jugadores);
+    turno = 0;
+
 }
 
 
@@ -101,7 +105,12 @@ function buscaValor(array,valorBuscado){
 }
 
 function compararConArrayAnterior(arrayActual) {
-    if (tienenValoresIguales(carta, arrayActual) & fase==1 ){
+    if(turno<jugadores.length){
+        elecciones[turno] = tienenValoresIguales(carta, arrayActual);
+        turno++;
+        console.log(elecciones);
+        console.log(turno);}
+    else if (tienenValoresIguales(carta, arrayActual) & fase==1 ){
         document.getElementById('guerra').style.display="none";
         document.getElementById('cosa').style.display="none";
         if(tienenValoresIguales(guerra, arrayActual)){
