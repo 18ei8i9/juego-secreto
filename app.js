@@ -70,9 +70,10 @@ function terminaCarga(){
     document.getElementById('terminar').style.display="none";
     document.getElementById('guerra').style.display="block";
     document.getElementById('cosa').style.display="block";
-    asignarTextoElemento('p',`ELIGE GUERRA O COSA`);
+    
     console.log(jugadores);
     turno = 0;
+    asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`)
 
 }
 
@@ -105,12 +106,20 @@ function buscaValor(array,valorBuscado){
 }
 
 function compararConArrayAnterior(arrayActual) {
-    if(turno<jugadores.length){
-        elecciones[turno] = tienenValoresIguales(carta, arrayActual);
-        turno++;
+   
+    elecciones[turno] = tienenValoresIguales(carta, arrayActual);
+    if(turno==jugadores.length-1){
+        document.getElementById('guerra').style.display="none";
+        document.getElementById('cosa').style.display="none";
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         console.log(elecciones);
         console.log(turno);}
-    else if (tienenValoresIguales(carta, arrayActual) & fase==1 ){
+    else {
+        turno++;
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
+    }
+ }
+    /*else if (tienenValoresIguales(carta, arrayActual) & fase==1 ){
         document.getElementById('guerra').style.display="none";
         document.getElementById('cosa').style.display="none";
         if(tienenValoresIguales(guerra, arrayActual)){
@@ -170,7 +179,7 @@ function compararConArrayAnterior(arrayActual) {
         condicionesIniciales();
         
     }
-}
+}*/
 
 function compararConValor (valorPalo){
     if(buscaValor(carta,valorPalo) & fase==2){
