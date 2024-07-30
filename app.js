@@ -15,6 +15,7 @@ let acierto;
 let jugadores=[];
 let turno;
 let elecciones=[];
+let ganadores=[];
 
 function asignarTextoElemento(elemento, texto) {
     let elementoHTML = document.querySelector(elemento);
@@ -111,10 +112,13 @@ function compararConArrayAnterior(arrayActual) {
     if(turno==jugadores.length-1){
         document.getElementById('guerra').style.display="none";
         document.getElementById('cosa').style.display="none";
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
+        asignarTextoElemento('p',`jugador ${ganadores} elije una opcion`);
         console.log(elecciones);
         console.log(turno);}
     else {
+        if(elecciones[turno]){
+            ganadores.push(jugadores[turno]);
+        }
         turno++;
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
     }
