@@ -109,20 +109,31 @@ function buscaValor(array,valorBuscado){
 function compararConArrayAnterior(arrayActual) {
    
     elecciones[turno] = tienenValoresIguales(carta, arrayActual);
+    if(elecciones[turno]){
+        ganadores.push(jugadores[turno]);
+    }
+    console.log(turno);
+    console.log(elecciones);
     if(turno==jugadores.length-1){
         document.getElementById('guerra').style.display="none";
         document.getElementById('cosa').style.display="none";
-        const h3 = document.querySelector('h3');
+        for(i=0;i<ganadores.length;i++){
 
-        h3.textContent = ganadores.join(', ');
-        
-        console.log(elecciones);
-        console.log(turno);}
-    else {
-        if(elecciones[turno]){
-            ganadores.push(jugadores[turno]);
+            document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
         }
+        document.getElementById('continuear').style.display="block";
+        jugadores=ganadores;
+        turno=0;
+        ganadores=[];
+        elecciones=[];
+
+        }
+    else {
+        console.log(turno);
+        
         turno++;
+        console.log(turno);
+        console.log(ganadores);
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
     }
  }
