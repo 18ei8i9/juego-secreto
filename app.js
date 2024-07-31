@@ -112,7 +112,10 @@ function compararConArrayAnterior(arrayActual) {
     if(turno==jugadores.length-1){
         document.getElementById('guerra').style.display="none";
         document.getElementById('cosa').style.display="none";
-        asignarTextoElemento('p',`jugador ${ganadores} elije una opcion`);
+        const h3 = document.querySelector('h3');
+
+        h3.textContent = ganadores.join(', ');
+        
         console.log(elecciones);
         console.log(turno);}
     else {
