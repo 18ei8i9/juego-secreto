@@ -26,7 +26,7 @@ function asignarTextoElemento(elemento, texto) {
 function condicionesIniciales() {
     asignarTextoElemento('h1','GUERRA O COSA');
     asignarTextoElemento('p',`INGRESE JUGADORES`);
-    fase = 1;
+    
     carta=elegirValores(palo,numero)
     console.log(carta);
     document.getElementById('nombre').style.display="block";
@@ -128,30 +128,26 @@ function compararConArrayAnterior(arrayActual) {
         elecciones=[];
 
         }
-    else {
+    else if{
         console.log(turno);
-        
+        fase = 1;
         turno++;
         console.log(turno);
         console.log(ganadores);
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
     }
- }
-    /*else if (tienenValoresIguales(carta, arrayActual) & fase==1 ){
-        document.getElementById('guerra').style.display="none";
-        document.getElementById('cosa').style.display="none";
-        if(tienenValoresIguales(guerra, arrayActual)){
-            asignarTextoElemento('p',`ELIGE ESPADA O BASTO`);
+    else if (tienenValoresIguales(guerra, arrayActual) & fase==1){
+        asignarTextoElemento('p',`ELIGE ESPADA O BASTO`);
         document.getElementById('espada').style.display="block";
         document.getElementById('basto').style.display="block";}
-        else if(tienenValoresIguales(cosa, arrayActual)){
-            asignarTextoElemento('p',`ELIGE ORO O COPAS`);
+    else if(tienenValoresIguales(cosa, arrayActual) & fase==1){
+        asignarTextoElemento('p',`ELIGE ORO O COPAS`);
         document.getElementById('oro').style.display="block";
         document.getElementById('copa').style.display="block";}
         fase++;
         console.log(fase);
-
-    }else if(tienenValoresIguales(carta, arrayActual) & fase==3 ){
+}
+   /* }else if(tienenValoresIguales(carta, arrayActual) & fase==3 ){
         asignarTextoElemento('p',`ES UNA CARTA BAJA (1 AL 6) O ALTA (7 AL 12)?`);
         document.getElementById('alta').style.display="block";
         document.getElementById('baja').style.display="block";
