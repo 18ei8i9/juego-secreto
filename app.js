@@ -121,7 +121,7 @@ function compararConArrayAnterior(arrayActual) {
 
             document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
         }
-        document.getElementById('continuar').style.display="block";
+        
         jugadores=ganadores;
         turno=0;
         ganadores=[];
