@@ -118,8 +118,18 @@ function continuar(){
             asignarTextoElemento('p',`ELIGE ORO O COPAS`);
         document.getElementById('oro').style.display="block";
         document.getElementById('copa').style.display="block";}
+    }else if(fase==3){
+        document.getElementById('continuar').style.display="none";
+        document.getElementById('par').style.display="block";
+        document.getElementById('impar').style.display="block";
+    }else if(fase==4){
+        asignarTextoElemento('p',`ES UNA CARTA BAJA (1 AL 6) O ALTA (7 AL 12)?`);
+        document.getElementById('continuar').style.display="none";
+        document.getElementById('alta').style.display="block";
+        document.getElementById('baja').style.display="block";
     }
 }
+
 
 
 
@@ -134,6 +144,8 @@ function compararConArrayAnterior(arrayActual) {
     if(turno==jugadores.length-1){
         document.getElementById('guerra').style.display="none";
         document.getElementById('cosa').style.display="none";
+        document.getElementById('par').style.display="none";
+        document.getElementById('impar').style.display="none";
         for(i=0;i<ganadores.length;i++){
 
             document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
