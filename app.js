@@ -127,6 +127,31 @@ function continuar(){
         document.getElementById('continuar').style.display="none";
         document.getElementById('alta').style.display="block";
         document.getElementById('baja').style.display="block";
+    }else if(fase==5){
+        document.getElementById('continuar').style.display="none";
+        if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, baja)){
+            document.getElementById('2').style.display="block";
+            document.getElementById('4').style.display="block";
+            document.getElementById('6').style.display="block";
+            
+            
+        }else if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, alta)){
+            document.getElementById('8').style.display="block";
+            document.getElementById('10').style.display="block";
+            document.getElementById('12').style.display="block";
+
+        }else if(tienenValoresIguales(carta, impar) & tienenValoresIguales(carta, baja)){
+            document.getElementById('1').style.display="block";
+            document.getElementById('3').style.display="block";
+            document.getElementById('5').style.display="block";
+
+
+        }else{
+            document.getElementById('7').style.display="block";
+            document.getElementById('9').style.display="block";
+            document.getElementById('11').style.display="block";
+
+        }
     }
 }
 
@@ -146,6 +171,8 @@ function compararConArrayAnterior(arrayActual) {
         document.getElementById('cosa').style.display="none";
         document.getElementById('par').style.display="none";
         document.getElementById('impar').style.display="none";
+        document.getElementById('alta').style.display="none";
+        document.getElementById('baja').style.display="none";
         for(i=0;i<ganadores.length;i++){
 
             document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
