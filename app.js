@@ -114,23 +114,25 @@ function continuar(){
     if(fase==2){
         document.getElementById('continuar').style.display="none";
         if(tienenValoresIguales(guerra, carta)){
-            asignarTextoElemento('p',`ELIGE ESPADA O BASTO`);
+            asignarTextoElemento('h1',`ELIGE ESPADA O BASTO`);
         document.getElementById('espada').style.display="block";
         document.getElementById('basto').style.display="block";}
         else if(tienenValoresIguales(cosa, carta)){
-            asignarTextoElemento('p',`ELIGE ORO O COPAS`);
+            asignarTextoElemento('h1',`ELIGE ORO O COPAS`);
         document.getElementById('oro').style.display="block";
         document.getElementById('copa').style.display="block";}
     }else if(fase==3){
+        asignarTextoElemento('h1',`ELIGE PAR O IMPAR`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('par').style.display="block";
         document.getElementById('impar').style.display="block";
     }else if(fase==4){
-        asignarTextoElemento('p',`ES UNA CARTA BAJA (1 AL 6) O ALTA (7 AL 12)?`);
+        asignarTextoElemento('h1',`ES UNA CARTA BAJA (1 AL 6) O ALTA (7 AL 12)?`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('alta').style.display="block";
         document.getElementById('baja').style.display="block";
     }else if(fase==5){
+        asignarTextoElemento('h1',`ARRIESGAA EL NUMERO!!!`);
         document.getElementById('continuar').style.display="none";
         if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, baja)){
             document.getElementById('2').style.display="block";
