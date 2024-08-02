@@ -10,19 +10,19 @@ const par = [2,4,6,8,10,12];
 const impar = [1,3,5,7,9,11];
 const baja = [1,2,3,4,5,6];
 const alta = [7,8,9,10,11,12];
-let valorBoton;
-let acierto;
 let jugadores=[];
-let turno;
+let turno=0;
 let elecciones=[];
 let ganadores=[];
 
+// para los mensajes del juego
 function asignarTextoElemento(elemento, texto) {
     let elementoHTML = document.querySelector(elemento);
     elementoHTML.innerHTML = texto;
     return;
 }
 
+//titulo y carga de jugadores
 function condicionesIniciales() {
     asignarTextoElemento('h1','GUERRA O COSA');
     asignarTextoElemento('p',`INGRESE JUGADORES`);
@@ -58,6 +58,7 @@ function condicionesIniciales() {
     
 }
 
+// funcion del boton para cargar los jugadores
 function agregaJugador(){
     let nombre = document.getElementById("nombre").value;
     if(nombre !==""){
@@ -66,6 +67,8 @@ function agregaJugador(){
         console.log(jugadores);
     }
 }
+
+//boton que termina la carga y carga la primer decision
 function terminaCarga(){
     document.getElementById('nombre').style.display="none";
     document.getElementById('agregar').style.display="none";
@@ -74,7 +77,7 @@ function terminaCarga(){
     document.getElementById('cosa').style.display="block";
     
     console.log(jugadores);
-    turno = 0;
+    
     asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`)
 
 }
@@ -173,7 +176,7 @@ function compararConArrayAnterior(arrayActual) {
         document.getElementById('impar').style.display="none";
         document.getElementById('alta').style.display="none";
         document.getElementById('baja').style.display="none";
-        
+        document.getElementById("h3").innerHTML=" ";
         for(i=0;i<ganadores.length;i++){
 
             document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
@@ -185,7 +188,7 @@ function compararConArrayAnterior(arrayActual) {
         ganadores=[];
         elecciones=[];
         fase++;
-        
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
 
         }
     else {
@@ -283,6 +286,7 @@ function compararConValor (valorPalo){
         document.getElementById('10').style.display="none";
         document.getElementById('11').style.display="none";
         document.getElementById('12').style.display="none";
+        document.getElementById("h3").innerHTML=" ";
         for(i=0;i<ganadores.length;i++){
 
             document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
