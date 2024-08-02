@@ -173,6 +173,7 @@ function compararConArrayAnterior(arrayActual) {
         document.getElementById('impar').style.display="none";
         document.getElementById('alta').style.display="none";
         document.getElementById('baja').style.display="none";
+        
         for(i=0;i<ganadores.length;i++){
 
             document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
@@ -259,7 +260,7 @@ function compararConArrayAnterior(arrayActual) {
 }*/
 
 function compararConValor (valorPalo){
-    elecciones[turno] = buscaValor(carta,valorPalo);
+    elecciones[turno] = fase==5 ? buscaValor(carta,parseInt(valorPalo)):buscaValor(carta,valorPalo);
     if(elecciones[turno]){
         ganadores.push(jugadores[turno]);
     }
@@ -270,6 +271,18 @@ function compararConValor (valorPalo){
         document.getElementById('oro').style.display="none";
         document.getElementById('espada').style.display="none";
         document.getElementById('basto').style.display="none";
+        document.getElementById('1').style.display="none";
+        document.getElementById('2').style.display="none";
+        document.getElementById('3').style.display="none";
+        document.getElementById('4').style.display="none";
+        document.getElementById('5').style.display="none";
+        document.getElementById('6').style.display="none";
+        document.getElementById('7').style.display="none";
+        document.getElementById('8').style.display="none";
+        document.getElementById('9').style.display="none";
+        document.getElementById('10').style.display="none";
+        document.getElementById('11').style.display="none";
+        document.getElementById('12').style.display="none";
         for(i=0;i<ganadores.length;i++){
 
             document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
