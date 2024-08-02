@@ -220,7 +220,40 @@ function compararConArrayAnterior(arrayActual) {
 }*/
 
 function compararConValor (valorPalo){
-    if(buscaValor(carta,valorPalo) & fase==2){
+    elecciones[turno] = buscaValor(carta,valorPalo);
+    if(elecciones[turno]){
+        ganadores.push(jugadores[turno]);
+    }
+    console.log(turno);
+    console.log(elecciones);
+    if(turno==jugadores.length-1){
+        document.getElementById('copa').style.display="none";
+        document.getElementById('oro').style.display="none";
+        document.getElementById('espada').style.display="none";
+        document.getElementById('basto').style.display="none";
+        for(i=0;i<ganadores.length;i++){
+
+            document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
+        }
+        document.getElementById('continuar').style.display="block";
+        asignarTextoElemento('p',`ADIVINARON Y PASAN DE RONDA`);
+        jugadores=ganadores;
+        turno=0;
+        ganadores=[];
+        elecciones=[];
+        fase++;
+        
+
+        }
+    else {
+        console.log(turno);
+        
+        turno++;
+        console.log(turno);
+        console.log(ganadores);
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
+    }
+   /*if(buscaValor(carta,valorPalo) & fase==2){
         asignarTextoElemento('p',`ES PAR O IMPAR`);
         document.getElementById('espada').style.display="none";
         document.getElementById('basto').style.display="none";
@@ -238,7 +271,7 @@ function compararConValor (valorPalo){
     }else{
         alert("PERDSTE GATO");
         condicionesIniciales();
-    }
+    }*/
 }
 
 
