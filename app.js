@@ -113,6 +113,7 @@ function buscaValor(array,valorBuscado){
 function continuar(){
     if(fase==2){
         document.getElementById('continuar').style.display="none";
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         if(tienenValoresIguales(guerra, carta)){
             asignarTextoElemento('h1',`ELIGE ESPADA O BASTO`);
         document.getElementById('espada').style.display="block";
@@ -190,7 +191,7 @@ function compararConArrayAnterior(arrayActual) {
         ganadores=[];
         elecciones=[];
         fase++;
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
+        
 
         }
     else {
