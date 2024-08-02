@@ -54,6 +54,7 @@ function condicionesIniciales() {
     document.getElementById('10').style.display="none";
     document.getElementById('11').style.display="none";
     document.getElementById('12').style.display="none";
+    document.getElementById('continuar').style.display="none";
     
 }
 
@@ -106,6 +107,22 @@ function buscaValor(array,valorBuscado){
     return array.includes(valorBuscado);
 }
 
+function continuar(){
+    if(fase==2){
+        document.getElementById('continuar').style.display="none";
+        if(tienenValoresIguales(guerra, carta)){
+            asignarTextoElemento('p',`ELIGE ESPADA O BASTO`);
+        document.getElementById('espada').style.display="block";
+        document.getElementById('basto').style.display="block";}
+        else if(tienenValoresIguales(cosa, carta)){
+            asignarTextoElemento('p',`ELIGE ORO O COPAS`);
+        document.getElementById('oro').style.display="block";
+        document.getElementById('copa').style.display="block";}
+    }
+}
+
+
+
 function compararConArrayAnterior(arrayActual) {
    
     elecciones[turno] = tienenValoresIguales(carta, arrayActual);
@@ -121,11 +138,14 @@ function compararConArrayAnterior(arrayActual) {
 
             document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
         }
-        document.getElementById('continuear').style.display="block";
+        document.getElementById('continuar').style.display="block";
+        asignarTextoElemento('p',`ADIVINARON Y PASAN DE RONDA`);
         jugadores=ganadores;
         turno=0;
         ganadores=[];
         elecciones=[];
+        fase++;
+        
 
         }
     else {
