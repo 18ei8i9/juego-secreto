@@ -55,6 +55,7 @@ function condicionesIniciales() {
     document.getElementById('11').style.display="none";
     document.getElementById('12').style.display="none";
     document.getElementById('continuar').style.display="none";
+    document.getElementById('reiniciar').style.display="none";
     
 }
 
@@ -124,16 +125,19 @@ function continuar(){
         document.getElementById('copa').style.display="block";}
     }else if(fase==3){
         asignarTextoElemento('h1',`ELIGE PAR O IMPAR`);
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('par').style.display="block";
         document.getElementById('impar').style.display="block";
     }else if(fase==4){
         asignarTextoElemento('h1',`ES UNA CARTA BAJA (1 AL 6) O ALTA (7 AL 12)?`);
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('alta').style.display="block";
         document.getElementById('baja').style.display="block";
     }else if(fase==5){
         asignarTextoElemento('h1',`ARRIESGAA EL NUMERO!!!`);
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, baja)){
             document.getElementById('2').style.display="block";
@@ -173,24 +177,39 @@ function compararConArrayAnterior(arrayActual) {
     console.log(turno);
     console.log(elecciones);
     if(turno==jugadores.length-1){
-        document.getElementById('guerra').style.display="none";
-        document.getElementById('cosa').style.display="none";
-        document.getElementById('par').style.display="none";
-        document.getElementById('impar').style.display="none";
-        document.getElementById('alta').style.display="none";
-        document.getElementById('baja').style.display="none";
-        document.getElementById("h3").innerHTML=" ";
-        for(i=0;i<ganadores.length;i++){
+        
+        
 
-            document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
-        }
-        document.getElementById('continuar').style.display="block";
-        asignarTextoElemento('p',`ADIVINARON Y PASAN DE RONDA`);
-        jugadores=ganadores;
-        turno=0;
-        ganadores=[];
-        elecciones=[];
-        fase++;
+        
+            document.getElementById('guerra').style.display="none";
+            document.getElementById('cosa').style.display="none";
+            document.getElementById('par').style.display="none";
+            document.getElementById('impar').style.display="none";
+            document.getElementById('alta').style.display="none";
+            document.getElementById('baja').style.display="none";
+            document.getElementById("h3").innerHTML=" ";
+        
+            if(ganadores.length!=0){
+                for(i=0;i<ganadores.length;i++){
+
+                    document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
+                }
+                document.getElementById('continuar').style.display="block";
+                asignarTextoElemento('p',`ADIVINARON Y PASAN DE RONDA`);
+                jugadores=ganadores;
+                turno=0;
+                ganadores=[];
+                elecciones=[];
+                fase++;}
+            else{
+                for(i=0;i<carta.length;i++){
+
+                    document.getElementById("h3").innerHTML +=  carta[i] + "<br>" ;
+                }
+                document.getElementById('reiniciar').style.display="block";
+                asignarTextoElemento('p',`NO ADIVINO NADIE`);
+                jugadores=[];
+            }
         
 
         }
