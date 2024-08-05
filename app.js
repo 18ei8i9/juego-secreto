@@ -25,9 +25,9 @@ function asignarTextoElemento(elemento, texto) {
 
 //titulo y carga de jugadores
 function condicionesIniciales() {
-    asignarTextoElemento('h1','GUERRA O COSA');
+    
     asignarTextoElemento('p',`INGRESE JUGADORES`);
-    let jugadoresiniciales=[];
+    jugadoresiniciales=[];
 
     document.getElementById('nombre').style.display="block";
     document.getElementById('agregar').style.display="block";
@@ -79,6 +79,8 @@ function terminaCarga(){
     document.getElementById('cosa').style.display="block";
     document.getElementById('reiniciar').style.display="none";
     document.getElementById('jugar').style.display="none";
+    document.getElementById("h3").innerHTML=" ";
+    asignarTextoElemento('h1','GUERRA O COSA');
     jugadores=jugadoresiniciales;
     fase = 1;
     carta=elegirValores(palo,numero);
@@ -119,6 +121,7 @@ function buscaValor(array,valorBuscado){
 
 function continuar(){
     if(fase==2){
+        document.getElementById("h3").innerHTML=" ";
         document.getElementById('continuar').style.display="none";
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         if(tienenValoresIguales(guerra, carta)){
@@ -130,18 +133,21 @@ function continuar(){
         document.getElementById('oro').style.display="block";
         document.getElementById('copa').style.display="block";}
     }else if(fase==3){
+        document.getElementById("h3").innerHTML=" ";
         asignarTextoElemento('h1',`ELIGE PAR O IMPAR`);
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('par').style.display="block";
         document.getElementById('impar').style.display="block";
     }else if(fase==4){
+        document.getElementById("h3").innerHTML=" ";
         asignarTextoElemento('h1',`ES UNA CARTA BAJA (1 AL 6) O ALTA (7 AL 12)?`);
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('alta').style.display="block";
         document.getElementById('baja').style.display="block";
     }else if(fase==5){
+        document.getElementById("h3").innerHTML=" ";
         asignarTextoElemento('h1',`ARRIESGAA EL NUMERO!!!`);
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
@@ -237,6 +243,7 @@ function compararConValor (valorPalo){
     }
     console.log(turno);
     console.log(elecciones);
+    console.log(ganadores);
     if(turno==jugadores.length-1){
         document.getElementById('copa').style.display="none";
         document.getElementById('oro').style.display="none";
@@ -264,6 +271,9 @@ function compararConValor (valorPalo){
                document.getElementById('reiniciar').style.display="block";
                document.getElementById('jugar').style.display="block";
                jugadores=[];
+               ganadores=[];
+               turno=0;
+               fase=1;
                }
             else{
                 document.getElementById('continuar').style.display="block";
@@ -290,8 +300,7 @@ function compararConValor (valorPalo){
         console.log(turno);
         
         turno++;
-        console.log(turno);
-        console.log(ganadores);
+        
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
     }
 }
