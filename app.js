@@ -291,37 +291,43 @@ function compararConValor (valorPalo){
     }
     console.log(turno);
     console.log(elecciones);
-    if(turno==jugadores.length-1){
-        document.getElementById('copa').style.display="none";
-        document.getElementById('oro').style.display="none";
-        document.getElementById('espada').style.display="none";
-        document.getElementById('basto').style.display="none";
-        document.getElementById('1').style.display="none";
-        document.getElementById('2').style.display="none";
-        document.getElementById('3').style.display="none";
-        document.getElementById('4').style.display="none";
-        document.getElementById('5').style.display="none";
-        document.getElementById('6').style.display="none";
-        document.getElementById('7').style.display="none";
-        document.getElementById('8').style.display="none";
-        document.getElementById('9').style.display="none";
-        document.getElementById('10').style.display="none";
-        document.getElementById('11').style.display="none";
-        document.getElementById('12').style.display="none";
-        document.getElementById("h3").innerHTML=" ";
-        for(i=0;i<ganadores.length;i++){
+    if(ganadores.length!=0){
+        if(turno==jugadores.length-1){
+           document.getElementById('copa').style.display="none";
+           document.getElementById('oro').style.display="none";
+           document.getElementById('espada').style.display="none";
+           document.getElementById('basto').style.display="none";
+           document.getElementById('1').style.display="none";
+           document.getElementById('2').style.display="none";
+           document.getElementById('3').style.display="none";
+           document.getElementById('4').style.display="none";
+           document.getElementById('5').style.display="none";
+           document.getElementById('6').style.display="none";
+           document.getElementById('7').style.display="none";
+           document.getElementById('8').style.display="none";
+           document.getElementById('9').style.display="none";
+           document.getElementById('10').style.display="none";
+           document.getElementById('11').style.display="none";
+           document.getElementById('12').style.display="none";
+           document.getElementById("h3").innerHTML=" ";
+           for(i=0;i<ganadores.length;i++){
 
-            document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
+               document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
+           }
+           if(fase==5){
+               asignarTextoElemento('p',`DALE CAMPEÓN, DALE CAMPEÓN!!!`);
+               document.getElementById('reiniciar').style.display="block";
+          }
+          else{
+            document.getElementById('continuar').style.display="block";
+            asignarTextoElemento('p',`ADIVINARON Y PASAN DE RONDA`);
+            jugadores=ganadores;
+            turno=0;
+            ganadores=[];
+            elecciones=[];
+            fase++;
+          }
         }
-        document.getElementById('continuar').style.display="block";
-        asignarTextoElemento('p',`ADIVINARON Y PASAN DE RONDA`);
-        jugadores=ganadores;
-        turno=0;
-        ganadores=[];
-        elecciones=[];
-        fase++;
-        
-
         }
     else {
         console.log(turno);
