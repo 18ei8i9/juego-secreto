@@ -88,7 +88,7 @@ body::before {
     padding: 2rem;
     font-size: 24px;
     font-weight: 700;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Banger' , Banger ;
 }
 
 .container__botones {
@@ -102,9 +102,15 @@ h1 {
     padding-bottom: 3rem;
 }
 
+h3 {
+    font-family: 'Banger' , Banger ;
+    font-size: 42px;
+    padding-bottom: 3rem;
+}
+
 p,
 button {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Banger' , Banger ;
 }
 
 .texto__parrafo {
