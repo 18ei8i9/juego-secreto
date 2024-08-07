@@ -222,6 +222,10 @@ function compararConArrayAnterior(arrayActual) {
                 asignarTextoElemento('p',`NO ADIVINO NADIE`);
                 document.getElementById('jugar').style.display="block";
                 jugadores=[];
+                ganadores=[];
+                turno=0;
+                fase=1;
+               
             }
         
 

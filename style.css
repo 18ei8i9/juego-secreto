@@ -22,7 +22,7 @@ body {
     height: 600px;
     display: flex;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     border-radius: 24px;
     border: 1px solid #1875E8;
@@ -31,7 +31,7 @@ body {
 
 .container__contenido {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     position: absolute;
     bottom: 0;
@@ -39,6 +39,7 @@ body {
 
 .container__informaciones {
     flex: 1;
+    flex-direction: column;
     padding: 3rem;
 }
 
@@ -47,10 +48,12 @@ body {
     background: #1875E8;
     padding: 16px 24px;
     width: 100%;
-    font-size: 24px;
+    font-size: 54px;
     font-weight: 700;
     border: none;
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .container__boton:enabled {
