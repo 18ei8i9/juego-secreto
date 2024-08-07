@@ -84,6 +84,7 @@ body {
 .container__botones {
     display: flex;
     gap: 2em;
+    flex-direction: column;
 }
 
 h1 {
