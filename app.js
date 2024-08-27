@@ -26,7 +26,6 @@ function asignarTextoElemento(elemento, texto) {
 //titulo y carga de jugadores
 function condicionesIniciales() {
     
-    asignarTextoElemento('p',`INGRESE JUGADORES`);
     jugadoresiniciales=[];
 
     document.getElementById('nombre').style.display="block";
@@ -80,7 +79,6 @@ function terminaCarga(){
     document.getElementById('reiniciar').style.display="none";
     document.getElementById('jugar').style.display="none";
     document.getElementById("h3").innerHTML=" ";
-    asignarTextoElemento('h1','GUERRA O COSA');
     jugadores=jugadoresiniciales;
     fase = 1;
     carta=elegirValores(palo,numero);
@@ -125,30 +123,30 @@ function continuar(){
         document.getElementById('continuar').style.display="none";
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         if(tienenValoresIguales(guerra, carta)){
-            asignarTextoElemento('h1',`ELIGE ESPADA O BASTO`);
+            
         document.getElementById('espada').style.display="block";
         document.getElementById('basto').style.display="block";}
         else if(tienenValoresIguales(cosa, carta)){
-            asignarTextoElemento('h1',`ELIGE ORO O COPAS`);
+            
         document.getElementById('oro').style.display="block";
         document.getElementById('copa').style.display="block";}
     }else if(fase==3){
         document.getElementById("h3").innerHTML=" ";
-        asignarTextoElemento('h1',`ELIGE PAR O IMPAR`);
+        
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('par').style.display="block";
         document.getElementById('impar').style.display="block";
     }else if(fase==4){
         document.getElementById("h3").innerHTML=" ";
-        asignarTextoElemento('h1',`ES UNA CARTA BAJA (1 AL 6) O ALTA (7 AL 12)?`);
+        
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('alta').style.display="block";
         document.getElementById('baja').style.display="block";
     }else if(fase==5){
         document.getElementById("h3").innerHTML=" ";
-        asignarTextoElemento('h1',`ARRIESGAA EL NUMERO!!!`);
+        
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, baja)){
@@ -204,7 +202,7 @@ function compararConArrayAnterior(arrayActual) {
             if(ganadores.length!=0){
                 for(i=0;i<ganadores.length;i++){
 
-                    document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
+                    document.getElementById("h3").innerHTML +=  ganadores[i] + " / " ;
                 }
                 document.getElementById('continuar').style.display="block";
                 asignarTextoElemento('p',`ADIVINARON Y PASAN DE RONDA`);
@@ -268,7 +266,7 @@ function compararConValor (valorPalo){
         document.getElementById("h3").innerHTML=" ";
         if(ganadores.length!=0){
             for(i=0;i<ganadores.length;i++){
-               document.getElementById("h3").innerHTML +=  ganadores[i] + "<br>" ;
+               document.getElementById("h3").innerHTML +=  ganadores[i] + " / " ;
             }
             if(fase==5){
                asignarTextoElemento('p',`DALE CAMPEÓN, DALE CAMPEÓN!!!`);
