@@ -24,9 +24,7 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: start;
-    border-radius: 24px;
-    border: 1px solid #1875E8;
-   }
+    }
 
 
 .container__contenido {
@@ -35,12 +33,6 @@ body {
     align-items: center;
     position: absolute;
     bottom: 0;
-}
-
-.container__informaciones {
-    flex: 1;
-    flex-direction: column;
-    padding: 3rem;
 }
 
 .container__boton {
@@ -75,7 +67,7 @@ body {
     background-color: #FFF;
     border: none;
     color: #1875E8;
-    padding: 2rem;
+
     font-size: 24px;
     font-weight: 700;
     font-family: 'Banger' , Banger ;
@@ -89,16 +81,9 @@ body {
     flex-direction: column;
 }
 
-h1 {
-    font-family: 'Banger' , Banger ;
-    font-size: 72px;
-    padding-bottom: 3rem;
-}
-
 h3 {
     font-family: 'Banger' , Banger ;
     font-size: 42px;
-    padding-bottom: 3rem;
 }
 
 p,
