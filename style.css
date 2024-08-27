@@ -44,16 +44,15 @@ body {
 }
 
 .container__boton {
-    border-radius: 16px;
+   
     background: #1875E8;
-    padding: 16px 24px;
+    height: 100%;
     width: 100%;
     font-size: 54px;
     font-weight: 700;
     border: none;
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
+    
+    
 }
 
 .container__boton:enabled {
@@ -61,7 +60,8 @@ body {
 }
 
 .container__texto {
-    margin: 16px 0 16px 0;
+    width: 100%;
+    height: 35%;
 }
 
 .container__texto-azul {
@@ -83,7 +83,9 @@ body {
 
 .container__botones {
     display: flex;
-    gap: 2em;
+    width: 100%;
+    height: 65%;
+    gap: 1px;
     flex-direction: column;
 }
 
