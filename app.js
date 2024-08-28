@@ -30,7 +30,7 @@ function condicionesIniciales() {
 
     document.getElementById('nombre').style.display="block";
     document.getElementById('agregar').style.display="block";
-    document.getElementById('terminar').style.display="block";
+    document.getElementById('terminar').style.display="none";
     document.getElementById('guerra').style.display="none";
     document.getElementById('cosa').style.display="none";
     document.getElementById('espada').style.display="none";
@@ -66,6 +66,7 @@ function agregaJugador(){
         jugadoresiniciales.push(nombre);
         document.getElementById('nombre').value = '';
         console.log(jugadoresiniciales);
+        document.getElementById('terminar').style.display="block";
     }
 }
 
