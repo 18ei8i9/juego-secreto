@@ -215,7 +215,7 @@ function compararConArrayAnterior(arrayActual) {
             else{
                 for(i=0;i<carta.length;i++){
 
-                    document.getElementById("h3").innerHTML +=  carta[i] + "<br>" ;
+                    document.getElementById("h3").innerHTML +=  carta[i] + " " ;
                 }
                 document.getElementById('reiniciar').style.display="block";
                 asignarTextoElemento('p',`NO ADIVINO NADIE`);
@@ -291,7 +291,7 @@ function compararConValor (valorPalo){
         else{
             for(i=0;i<carta.length;i++){
 
-                document.getElementById("h3").innerHTML +=  carta[i] + "" ;
+                document.getElementById("h3").innerHTML +=  carta[i]+ " " ;
             }
             document.getElementById('reiniciar').style.display="block";
             asignarTextoElemento('p',`NO ADIVINO NADIE`);
