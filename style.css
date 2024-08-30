@@ -35,12 +35,28 @@ body {
     bottom: 0;
 }
 
-.container__boton {
+.container__boton__arriba {
    
     background: #1875E8;
     height: 50%;
     width: 100%;
     font-size: 54px;
+    font-weight: 700;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("./img/COSA.png");
+    background:round;    
+    
+}
+
+.container__boton__abajo {
+   
+    background: #1875E8;
+    height: 50%;
+    width: 100%;
+    font-size: 100px;
     font-weight: 700;
     border: none;
     display: flex;

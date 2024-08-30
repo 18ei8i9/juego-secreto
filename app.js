@@ -135,7 +135,7 @@ function continuar(){
     }else if(fase==3){
         document.getElementById("h3").innerHTML=" ";
         document.getElementById('par').style.backgroundImage = `url(./img/${carta[0]}PAR.png)`;
-        document.getElementById('btnabajo').src=`./img/${carta[0]}IMPAR.png`;
+        document.getElementById('impar').style.backgroundImage = `url(./img/${carta[0]}IMPAR.png)`;
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('par').style.display="block";
@@ -143,8 +143,8 @@ function continuar(){
         
     }else if(fase==4){
         document.getElementById("h3").innerHTML=" ";
-        document.getElementById('btnalta').src=`./img/${carta[0]+valorguia}ALTA.png`;
-        document.getElementById('btnbaja').src=`./img/${carta[0]}${valorguia}BAJA.png`;
+        document.getElementById('alta').style.backgroundImage = `url(./img/${carta[0]+valorguia}ALTA.png)`;
+        document.getElementById('baja').style.backgroundImage = `url(./img/${carta[0]}${valorguia}BAJA.png)`;
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('alta').style.display="block";
