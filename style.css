@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     color: white;
+    text-shadow: -1px 0px 0px #000 , 0px 1px 0px #000, 1px 0px 0px #000, 0px -1px 0px #000 ;
 }
 
 @font-face { font-family: Banger; src: url('./fonts/Banger.ttf'); }
@@ -40,7 +41,7 @@ body {
    color: #1875E8;
     height: 50%;
     width: 100%;
-    font-size: xx-large;
+    font-size: 3em;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
@@ -55,7 +56,7 @@ body {
     color: #1875E8;
     height: 50%;
     width: 100%;
-    font-size: xx-large;
+    font-size: 3em;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
@@ -70,7 +71,7 @@ body {
     color: #1875E8;
     height: 30%;
     width: 100%;
-    font-size: xx-large;
+    font-size: 3em;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
@@ -84,7 +85,7 @@ body {
     color: #1875E8;
     height: 30%;
     width: 100%;
-    font-size: xx-large;
+    font-size: 3em;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
@@ -97,7 +98,7 @@ body {
     color: #1875E8;
     height: 30%;
     width: 100%;
-    font-size: xx-large;
+    font-size: 3em;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
@@ -121,9 +122,6 @@ img{
     height: 15%;
 }
 
-.container__texto-azul {
-    color: #1875E8;
-}
 
 .container__input {
     width: 80%;
@@ -133,7 +131,7 @@ img{
     border: none;
     color: #1875E8;
     text-align: center;
-    font-size: 24px;
+    font-size: 3em;
     font-weight: 700;
     font-family: 'Banger' , Banger ;
 }
