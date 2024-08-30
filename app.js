@@ -191,7 +191,7 @@ function compararConArrayAnterior(arrayActual) {
     }
     console.log(turno);
     console.log(elecciones);
-    valorguia = object.keys({arrayActual});
+    
     if(turno==jugadores.length-1){
         
         
@@ -242,6 +242,7 @@ function compararConArrayAnterior(arrayActual) {
         console.log(ganadores);
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
     }
+    valorguia = object.keys({arrayActual})[0];
  }
 
 function compararConValor (valorPalo){
