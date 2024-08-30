@@ -40,7 +40,7 @@ body {
    color: #1875E8;
     height: 50%;
     width: 100%;
-    font-size: 100px;
+    font-size: xx-large;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
@@ -55,7 +55,7 @@ body {
     color: #1875E8;
     height: 50%;
     width: 100%;
-    font-size: 100px;
+    font-size: xx-large;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
@@ -70,7 +70,7 @@ body {
     color: #1875E8;
     height: 30%;
     width: 100%;
-    font-size: 100px;
+    font-size: xx-large;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
@@ -84,7 +84,7 @@ body {
     color: #1875E8;
     height: 30%;
     width: 100%;
-    font-size: 100px;
+    font-size: xx-large;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
@@ -97,7 +97,7 @@ body {
     color: #1875E8;
     height: 30%;
     width: 100%;
-    font-size: 100px;
+    font-size: xx-large;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
@@ -126,13 +126,13 @@ img{
 }
 
 .container__input {
-    width: 100%;
+    width: 80%;
     height: 72px;
     border-radius: 16px;
     background-color: #FFF;
     border: none;
     color: #1875E8;
-
+    text-align: center;
     font-size: 24px;
     font-weight: 700;
     font-family: 'Banger' , Banger ;
