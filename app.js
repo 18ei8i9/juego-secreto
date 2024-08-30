@@ -184,7 +184,7 @@ function continuar(){
 
 
 function compararConArrayAnterior(arrayActual) {
-    valorguia = object.keys({arrayActual})[0];
+    valorguia = object.keys({arrayActual});
     elecciones[turno] = tienenValoresIguales(carta, arrayActual);
     if(elecciones[turno]){
         ganadores.push(jugadores[turno]);
