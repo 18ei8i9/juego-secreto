@@ -184,13 +184,14 @@ function continuar(){
 
 
 function compararConArrayAnterior(arrayActual) {
-    valorguia = object.keys({arrayActual});
+    
     elecciones[turno] = tienenValoresIguales(carta, arrayActual);
     if(elecciones[turno]){
         ganadores.push(jugadores[turno]);
     }
     console.log(turno);
     console.log(elecciones);
+    valorguia = object.keys({arrayActual});
     if(turno==jugadores.length-1){
         
         
