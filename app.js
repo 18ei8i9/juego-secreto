@@ -164,9 +164,9 @@ function continuar(){
             document.getElementById('2').style.display="block";
             document.getElementById('4').style.display="block";
             document.getElementById('6').style.display="block";
-            document.getElementById('2').style.backgroundImage = `url(./img/${carta[0]+2}.png)`;
-            document.getElementById('4').style.backgroundImage = `url(./img/${carta[0]+String(4)}.png)`;
-            document.getElementById('6').style.backgroundImage = `url(./img/${carta[0]+String(6)}.png)`;
+            document.getElementById('2').style.backgroundImage = `url(./img/${carta[0]}2.png)`;
+            document.getElementById('4').style.backgroundImage = `url(./img/${carta[0]}4.png)`;
+            document.getElementById('6').style.backgroundImage = `url(./img/${carta[0]}6.png)`;
             
             
         }else if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, alta)){
