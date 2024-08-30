@@ -15,6 +15,7 @@ let jugadoresiniciales=[];
 let turno=0;
 let elecciones=[];
 let ganadores=[];
+let valorguia=""
 
 // para los mensajes del juego
 function asignarTextoElemento(elemento, texto) {
@@ -139,9 +140,11 @@ function continuar(){
         document.getElementById('continuar').style.display="none";
         document.getElementById('par').style.display="block";
         document.getElementById('impar').style.display="block";
+        
     }else if(fase==4){
         document.getElementById("h3").innerHTML=" ";
-        
+        document.getElementById('btnarriba').src=`./img/${carta[0]+valorguia}ALTA.png`;
+        document.getElementById('btnabajo').src=`./img/${carta[0]+valorguia}BAJA.png`;
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('alta').style.display="block";
@@ -181,7 +184,7 @@ function continuar(){
 
 
 function compararConArrayAnterior(arrayActual) {
-   
+    valorguia=arrayActual    ;
     elecciones[turno] = tienenValoresIguales(carta, arrayActual);
     if(elecciones[turno]){
         ganadores.push(jugadores[turno]);
