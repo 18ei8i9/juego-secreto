@@ -81,6 +81,8 @@ function terminaCarga(){
     document.getElementById('reiniciar').style.display="none";
     document.getElementById('jugar').style.display="none";
     document.getElementById("h3").innerHTML=" ";
+    document.getElementById('guerra').style.backgroundImage = `url(./img/GUERRA.png)`;
+    document.getElementById('cosa').style.backgroundImage = `url(./img/COSA.png)`;
     jugadores=jugadoresiniciales;
     fase = 1;
     carta=elegirValores(palo,numero);
@@ -127,11 +129,15 @@ function continuar(){
         if(tienenValoresIguales(guerra, carta)){
             
         document.getElementById('espada').style.display="block";
-        document.getElementById('basto').style.display="block";}
+        document.getElementById('basto').style.display="block";
+        document.getElementById('espada').style.backgroundImage = `url(./img/ESPADA.png)`;
+        document.getElementById('basto').style.backgroundImage = `url(./img/BASTO.png)`;}
         else if(tienenValoresIguales(cosa, carta)){
             
         document.getElementById('oro').style.display="block";
-        document.getElementById('copa').style.display="block";}
+        document.getElementById('copa').style.display="block";
+        document.getElementById('oro').style.backgroundImage = `url(./img/ORO.png)`;
+        document.getElementById('copa').style.backgroundImage = `url(./img/COPA.png)`;}
     }else if(fase==3){
         document.getElementById("h3").innerHTML=" ";
         document.getElementById('par').style.backgroundImage = `url(./img/${carta[0]}PAR.png)`;
@@ -158,23 +164,35 @@ function continuar(){
             document.getElementById('2').style.display="block";
             document.getElementById('4').style.display="block";
             document.getElementById('6').style.display="block";
+            document.getElementById('2').style.backgroundImage = `url(./img/${carta[0]+2}.png)`;
+            document.getElementById('4').style.backgroundImage = `url(./img/${carta[0]+String(4)}.png)`;
+            document.getElementById('6').style.backgroundImage = `url(./img/${carta[0]+String(6)}.png)`;
             
             
         }else if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, alta)){
             document.getElementById('8').style.display="block";
             document.getElementById('10').style.display="block";
             document.getElementById('12').style.display="block";
+            document.getElementById('8').style.backgroundImage = `url(./img/${carta[0]}8.png)`;
+            document.getElementById('10').style.backgroundImage = `url(./img/${carta[0]}10.png)`;
+            document.getElementById('12').style.backgroundImage = `url(./img/${carta[0]}12.png)`;
 
         }else if(tienenValoresIguales(carta, impar) & tienenValoresIguales(carta, baja)){
             document.getElementById('1').style.display="block";
             document.getElementById('3').style.display="block";
             document.getElementById('5').style.display="block";
+            document.getElementById('1').style.backgroundImage = `url(./img/${carta[0]}1.png)`;
+            document.getElementById('3').style.backgroundImage = `url(./img/${carta[0]}3.png)`;
+            document.getElementById('5').style.backgroundImage = `url(./img/${carta[0]}5.png)`;
 
 
         }else{
             document.getElementById('7').style.display="block";
             document.getElementById('9').style.display="block";
             document.getElementById('11').style.display="block";
+            document.getElementById('7').style.backgroundImage = `url(./img/${carta[0]}7.png)`;
+            document.getElementById('9').style.backgroundImage = `url(./img/${carta[0]}9.png)`;
+            document.getElementById('11').style.backgroundImage = `url(./img/${carta[0]}11.png)`;
 
         }
     }

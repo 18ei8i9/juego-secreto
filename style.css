@@ -37,37 +37,75 @@ body {
 
 .container__boton__arriba {
    
-    background: #1875E8;
+   color: #1875E8;
     height: 50%;
     width: 100%;
-    font-size: 54px;
+    font-size: 100px;
     font-weight: 700;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-image: url("./img/COSA.png");
     background:round; 
-    background-repeat: no repeat;
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: center;
     
 }
 
 .container__boton__abajo {
    
-    background: #1875E8;
+    color: #1875E8;
     height: 50%;
     width: 100%;
     font-size: 100px;
     font-weight: 700;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-image: url("./img/COSA.png");
-    background:round;   
-    background-repeat: no repeat;
-    
+    background:round; 
+    background-repeat:no-repeat;
+    background-size: contain;    
+    background-position: center;
 }
+
+
+.container__boton__1{
+   
+    color: #1875E8;
+    height: 30%;
+    width: 100%;
+    font-size: 100px;
+    font-weight: 700;
+    background-image: url("./img/COSA.png");
+    background:round; 
+    background-repeat:no-repeat;
+    background-size: contain;    
+    background-position: center;
+}
+
+.container__boton__2{
+   
+    color: #1875E8;
+    height: 30%;
+    width: 100%;
+    font-size: 100px;
+    font-weight: 700;
+    background-image: url("./img/COSA.png");
+    background:round; 
+    background-repeat:no-repeat;
+    background-size: contain;    
+    background-position: center;
+}
+.container__boton__3{
+   
+    color: #1875E8;
+    height: 30%;
+    width: 100%;
+    font-size: 100px;
+    font-weight: 700;
+    background-image: url("./img/COSA.png");
+    background:round; 
+    background-repeat:no-repeat;
+    background-size: contain;    
+    background-position: center;
+}
+
 
 img{
     width: 100%;
