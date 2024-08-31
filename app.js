@@ -134,7 +134,7 @@ function continuar(){
         document.getElementById('copa').style.display="block";}
     }else if(fase==3){
         document.getElementById("h3").innerHTML=" ";
-        document.getElementById('btnarriba').src=`./img/${carta[0]}PAR.png`;
+        document.getElementById('par').style.backgroundImage = `url(./img/${carta[0]}PAR.png)`;
         document.getElementById('btnabajo').src=`./img/${carta[0]}IMPAR.png`;
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
