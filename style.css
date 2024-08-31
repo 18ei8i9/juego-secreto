@@ -47,7 +47,8 @@ body {
     align-items: center;
     justify-content: center;
     background-image: url("./img/COSA.png");
-    background:round;    
+    background:round; 
+    background-repeat: no repeat;
     
 }
 
@@ -63,7 +64,8 @@ body {
     align-items: center;
     justify-content: center;
     background-image: url("./img/COSA.png");
-    background:round;    
+    background:round;   
+    background-repeat: no repeat;
     
 }
 
