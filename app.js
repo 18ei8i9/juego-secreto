@@ -143,8 +143,8 @@ function continuar(){
         
     }else if(fase==4){
         document.getElementById("h3").innerHTML=" ";
-        document.getElementById('btnarriba').src=`./img/${carta[0]+valorguia}ALTA.png`;
-        document.getElementById('btnabajo').src=`./img/${carta[0]+valorguia}BAJA.png`;
+        document.getElementById('btnalta').src=`./img/${carta[0]+valorguia}ALTA.png`;
+        document.getElementById('btnbaja').src=`./img/${carta[0]}${valorguia}BAJA.png`;
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         document.getElementById('alta').style.display="block";
@@ -191,7 +191,8 @@ function compararConArrayAnterior(arrayActual) {
     }
     console.log(turno);
     console.log(elecciones);
-    valorguia = Object.keys({arrayActual})[0];
+    valorguia = tienenValoresIguales(par, arrayActual)?"PAR":"IMPAR" ;
+    console.log(`./img/${carta[0]+valorguia}BAJA.png`);
     
     if(turno==jugadores.length-1){
         
