@@ -12,7 +12,7 @@ const paralta = [8,10,12];
 const parbaja = [2,4,6];
 const imparalta = [7,9,11];
 const imparbaja = [1,3,5];
-const cartas=[];
+const cartas=[paralta,parbaja,imparalta,imparbaja];
 let jugadores=[];
 let jugadoresiniciales=[];
 let turno=0;
@@ -149,6 +149,17 @@ function compararValor(valor){
             modBoton('btnarriba',`${carta[2]}ALTA`);
             modBoton('btnabajo',`${carta[2]}BAJA`);
             }
+        else if(fase==5){
+            for(i=0;i<cartas.length;i++){
+                if(tienenValoresIguales(cartas[i],carta)){
+                    asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
+                    modBoton('boton1',`${carta[1]}${cartas[i][0]}`);
+                    modBoton('boton2',`${carta[1]}${cartas[i][1]}`);
+                    modBoton('boton3',`${carta[1]}${cartas[i][2]}`);
+                }
+            }
+        }
+    
     }
     else{
         console.log(valor);
@@ -183,6 +194,21 @@ function compararValor(valor){
                  turno=0;
                  ganadores=[];
                  fase++; }
+            else{
+                modBoton('boton1',`${carta[1]}${carta[4]}`);
+                modBoton('boton2',`EMPEZAR`);
+                modBoton('boton3',`${carta[1]}${carta[4]}`);
+                perdiste.loop=true;
+                perdiste.play();
+                eleccion.pause();
+                eleccion.currentTime=0;
+                asignarTextoElemento('p',`NO ADIVINO NADIE`);
+                jugadores=[];
+                ganadores=[];
+                turno=0;
+                fase=1;
+               
+            }
         }else{
         turno++;
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
@@ -255,11 +281,11 @@ function elegirValores(guerracosa, guerra, cosa, parimpar,alrabaja,parbaja,paral
 }
 //////////////////////////////////////ELECCION DE CARTA//////////////////////////////////////////////////
 
-/*
+
 function tienenValoresIguales(arr1, arr2) {
     return arr1.some(valor => arr2.includes(valor));
 }
-*/
+
 function buscaValor(array,valorBuscado){
     return array.includes(valorBuscado);
 }
