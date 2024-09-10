@@ -96,6 +96,7 @@ function compararValor(valor){
         perdiste.currentTime=0;
         ganaste.pause();
         ganaste.currentTime=0;
+        document.getElementById('boton1').style.display="none"; //este boton no se usa ahora
         document.getElementById('boton2').style.display="none"; //este boton no se usa ahora
         document.getElementById('boton3').style.display="none"; //este boton no se usa ahora
         document.getElementById('btnarriba').style.display="block"; //este boton no se usa ahora
@@ -196,8 +197,18 @@ function compararValor(valor){
                  fase++; }
             else{
                 modBoton('boton1',`${carta[1]}${carta[4]}`);
-                modBoton('boton2',`EMPEZAR`);
-                modBoton('boton3',`${carta[1]}${carta[4]}`);
+                //modBoton('boton2',`EMPEZAR`);
+               // document.getElementById('boton2').textContent="JUGAR DE NUEVO";
+                //modBoton('boton3',`REINICIAR`);
+                //document.getElementById('boton3').textContent="REINICIAR";
+                //document.getElementById('boton3').onclick=condicionesIniciales();
+                document.getElementById(`boton2`).style.display='block';
+                document.getElementById(`boton2`).textContent=`JUGAR DE NUEVO`;
+                document.getElementById(`boton2`).value=`empezar`;
+                document.getElementById(`boton3`).style.display='block';
+                document.getElementById(`boton3`).textContent=`REINICIAR`;
+                document.getElementById(`boton3`).addEventListener("click",condicionesIniciales)   ;
+            
                 perdiste.loop=true;
                 perdiste.play();
                 eleccion.pause();
