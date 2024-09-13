@@ -36,9 +36,9 @@ body {
     bottom: 0;
 }
 
-.container__boton__arriba {
+.btn_arriba, .btn_abajo {
    
-   color: #1875E8;
+   color:white;
     height: 50%;
     width: 100%;
     font-size: 3em;
@@ -51,9 +51,9 @@ body {
     
 }
 
-.container__boton__abajo {
+.btnabajo {
    
-    color: #1875E8;
+    color: white;
     height: 50%;
     width: 100%;
     font-size: 3em;
@@ -66,9 +66,9 @@ body {
 }
 
 
-.container__boton__1{
+.boton_1, .boton_2, .boton_3 {
    
-    color: #1875E8;
+    color: white;
     height: 30%;
     width: 100%;
     font-size: 3em;
@@ -80,9 +80,9 @@ body {
     background-position: center;
 }
 
-.container__boton__2{
+.btn_2 {
    
-    color: #1875E8;
+    color: white;
     height: 30%;
     width: 100%;
     font-size: 3em;
@@ -93,9 +93,9 @@ body {
     background-size: contain;    
     background-position: center;
 }
-.container__boton__3{
+.btn_3 {
    
-    color: #1875E8;
+    color: white;
     height: 30%;
     width: 100%;
     font-size: 3em;
@@ -129,11 +129,12 @@ img{
     border-radius: 16px;
     background-color: #FFF;
     border: none;
-    color: #1875E8;
+    color: black;
     text-align: center;
     font-size: 3em;
     font-weight: 700;
     font-family: 'Banger' , Banger ;
+    
 }
 
 .container__botones {

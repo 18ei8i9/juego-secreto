@@ -6,123 +6,244 @@ const palo = ["ORO", "COPA","ESPADA", "BASTO"];
 const guerracosa = ["GUERRA", "COSA"];
 const guerra = ["ESPADA", "BASTO"];
 const cosa = ["ORO", "COPA"];
-const par = [2,4,6,8,10,12];
-const impar = [1,3,5,7,9,11];
-const baja = [1,2,3,4,5,6];
-const alta = [7,8,9,10,11,12];
+const parimpar = ["par","impar"];
+const alrabaja = ["alta","baja"];
+const paralta = [8,10,12];
+const parbaja = [2,4,6];
+const imparalta = [7,9,11];
+const imparbaja = [1,3,5];
+const cartas=[];
 let jugadores=[];
 let jugadoresiniciales=[];
 let turno=0;
 let elecciones=[];
 let ganadores=[];
 let valorguia=""
-
+let eleccion = new Audio("./audio/inicio.mp3");
+let acierto = new Audio("./audio/acertado.mp3");
+let ganaste = new Audio("./audio/ganaste.mp3");
+let perdiste = new Audio("./audio/perdiste.mp3");
 // para los mensajes del juego
+
 function asignarTextoElemento(elemento, texto) {
     let elementoHTML = document.querySelector(elemento);
     elementoHTML.innerHTML = texto;
     return;
 }
 
+
+
 //titulo y carga de jugadores
-function condicionesIniciales() {
+function condicionesIniciales() {                              //primer pantalla, es la primer funcion que se carga, luego se carga de vuelta con boton "reiniciar"
+    fase=0;                                                    //indica que se esta en la etapa de carga
+    jugadoresiniciales=[];                                     //aca se van cargando los participantes, se vuelve a poner en cero con boton "reiniciar"  
+    document.getElementById('nombre').style.display="block";   //aca se escriben los jugadores
+    document.getElementById('btnarriba').style.display="none"; //este boton no se usa ahora
+    document.getElementById('btnabajo').style.display="none";  //este boton no se usa ahora
+    document.getElementById('boton1').style.display="none";      //este boton no se usa ahora
+    document.getElementById('boton3').style.display="none";      //este boton no se usa ahora
     
-    jugadoresiniciales=[];
-
-    document.getElementById('nombre').style.display="block";
-    document.getElementById('agregar').style.display="block";
-    document.getElementById('terminar').style.display="none";
-    document.getElementById('guerra').style.display="none";
-    document.getElementById('cosa').style.display="none";
-    document.getElementById('espada').style.display="none";
-    document.getElementById('basto').style.display="none";
-    document.getElementById('oro').style.display="none";
-    document.getElementById('copa').style.display="none";
-    document.getElementById('par').style.display="none";
-    document.getElementById('impar').style.display="none";
-    document.getElementById('alta').style.display="none";
-    document.getElementById('baja').style.display="none";
-    document.getElementById('1').style.display="none";
-    document.getElementById('2').style.display="none";
-    document.getElementById('3').style.display="none";
-    document.getElementById('4').style.display="none";
-    document.getElementById('5').style.display="none";
-    document.getElementById('6').style.display="none";
-    document.getElementById('7').style.display="none";
-    document.getElementById('8').style.display="none";
-    document.getElementById('9').style.display="none";
-    document.getElementById('10').style.display="none";
-    document.getElementById('11').style.display="none";
-    document.getElementById('12').style.display="none";
-    document.getElementById('continuar').style.display="none";
-    document.getElementById('reiniciar').style.display="none";
-    document.getElementById('jugar').style.display="none";
-    
+    document.getElementById('boton2').style.display="block";     // este boton se activa
+    document.getElementById('boton2').textContent="AGREGAR";     //asigno texto al boton
+    document.getElementById('boton2').value="agregar";           //asigno value al boton
 }
-
-// funcion del boton para cargar los jugadores
-function agregaJugador(){
-    let nombre = document.getElementById("nombre").value;
-    if(nombre !==""){
-        jugadoresiniciales.push(nombre);
-        document.getElementById('nombre').value = '';
-        console.log(jugadoresiniciales);
-        document.getElementById('terminar').style.display="block";
+//////////////////////////CAMBIA BOTONES///////////////////////////////////////////////////////////////
+    function modBoton(boton,variable){
+        document.getElementById(boton).style.display='block';
+        document.getElementById(boton).textContent=variable;
+        document.getElementById(boton).value=variable;
+        document.getElementById(boton).style.backgroundImage=`url(./img/${variable}.png)`;
+    
     }
-}
+//////////////////////////CAMBIA BOTONES///////////////////////////////////////////////////////////////
 
-//boton que termina la carga y carga la primer decision
-function terminaCarga(){
-    document.getElementById('nombre').style.display="none";
-    document.getElementById('agregar').style.display="none";
-    document.getElementById('terminar').style.display="none";
-    document.getElementById('guerra').style.display="block";
-    document.getElementById('cosa').style.display="block";
-    document.getElementById('reiniciar').style.display="none";
-    document.getElementById('jugar').style.display="none";
-    document.getElementById("h3").innerHTML=" ";
-    document.getElementById('guerra').style.backgroundImage = `url(./img/GUERRA.png)`;
-    document.getElementById('cosa').style.backgroundImage = `url(./img/COSA.png)`;
-    jugadores=jugadoresiniciales;
-    fase = 1;
-    carta=elegirValores(palo,numero);
-    console.log(carta);
-    console.log(jugadores);
     
-    asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`)
+
+
+
+function compararValor(valor){
+    if(valor=="agregar"){
+        perdiste.pause();
+        perdiste.currentTime=0;
+        ganaste.pause();
+        ganaste.currentTime=0;
+        let nombre = document.getElementById("nombre").value;
+        
+        if(nombre !==""){
+            jugadoresiniciales.push(nombre);
+            document.getElementById('nombre').value = '';
+            document.getElementById('boton3').style.display="block";
+            document.getElementById('boton3').textContent="EMPEZAR";
+            document.getElementById('boton3').value="empezar";  
+        }
+        document.getElementById("h3").innerHTML = " " ;
+        for(i=0;i<jugadoresiniciales.length;i++){
+
+            document.getElementById("h3").innerHTML +=  jugadoresiniciales[i] + " " ;
+        }        
+    }
+    else if(valor=="empezar"){
+        document.getElementById("nombre").style.display="none";
+        document.getElementById("h3").innerHTML = " " ;
+        eleccion.loop=true;
+        eleccion.play();
+        perdiste.pause();
+        perdiste.currentTime=0;
+        ganaste.pause();
+        ganaste.currentTime=0;
+        document.getElementById('boton2').style.display="none"; //este boton no se usa ahora
+        document.getElementById('boton3').style.display="none"; //este boton no se usa ahora
+        document.getElementById('btnarriba').style.display="block"; //este boton no se usa ahora
+        document.getElementById('btnabajo').style.display="block";  //este boton no se usa ahora
+        document.getElementById('btnarriba').textContent="GUERRA";     //asigno texto al boton
+        document.getElementById('btnarriba').value="GUERRA";           //asigno value al boton
+        document.getElementById('btnarriba').style.backgroundImage = `url(./img/GUERRA.png)`;
+        document.getElementById('btnabajo').style.backgroundImage = `url(./img/COSA.png)`;
+        document.getElementById('btnabajo').textContent="COSA";     //asigno texto al boton
+        document.getElementById('btnabajo').value="COSA";           //asigno value al boton
+        jugadores=jugadoresiniciales;
+        fase=1;
+        carta=elegirValores(guerracosa, guerra, cosa, parimpar,alrabaja,parbaja,paralta,imparbaja,imparalta);
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`)
+        console.log(carta);
+        console.log(valor);
+        console.log(ganadores);
+        console.log(fase);
+    }
+    if(valor=="continuar"){
+        eleccion.loop=true;
+        eleccion.play();
+        acierto.pause();
+        acierto.currentTime=0;
+        if(fase==2){
+            document.getElementById("h3").innerHTML=" ";
+            document.getElementById('boton3').style.display="none";
+            asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
+            if(carta[0]=="guerra"){
+                modBoton('btnarriba',"ESPADA");
+                modBoton('btnabajo',"BASTO");
+            }
+            else{
+                modBoton('btnarriba',"ORO");
+                modBoton('btnabajo',"COPA");
+            }
+        }
+    }
+    else {
+        console.log(valor);
+        console.log(ganadores);
+        console.log(fase);
+
+        if(buscaValor(carta,valor)){
+            ganadores.push(jugadores[turno]);
+        }
+        turno++;
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
+        if(turno==jugadores.length-1){
+            document.getElementById('btnarriba').style.display="none";
+            document.getElementById('btnabajo').style.display="none";
+            document.getElementById('boton3').style.display="block";
+            document.getElementById('boton3').textContent="CONTINUAR";
+            document.getElementById('boton3').value="continuar";
+            if(ganadores.length!=0){
+                for(i=0;i<ganadores.length;i++){
+                    document.getElementById("h3").innerHTML +=  ganadores[i] + "</br>";
+                 }
+                 acierto.loop=true;
+                 eleccion.pause();
+                 acierto.play();
+                 eleccion.currentTime=0;
+                 asignarTextoElemento('p',`ADIVINARON`);
+                 jugadores=ganadores;
+                 turno=0;
+                 ganadores=[];
+                 fase++; }
+        }
+        console.log(valor);
+        console.log(ganadores);
+        console.log(fase);
+        
+
+    }
+
+    
+}
+
+function modBoton(boton,variable){
+    document.getElementById(`${boton}`).style.display='block';
+    document.getElementById(`${boton}`).textContent=`${variable}`;
+    document.getElementById(`${boton}`).value=`${variable}`;
+    document.getElementById(`${boton}`).style.backgroundImage=`url(./img/${variable}).png`;
+    
 
 }
 
 
 
-function elegirValor() {
-    const indiceAleatorio = Math.floor(Math.random() * valores.length);
-    const valorElegido = valores[indiceAleatorio];
-    document.getElementById('resultado').textContent = `Valor elegido:
-${valorElegido}`;
-    console.log('Valor elegido:', valorElegido);
+//////////////////////////////////////ELECCION DE CARTA//////////////////////////////////////////////////
+function elegirValores(guerracosa, guerra, cosa, parimpar,alrabaja,parbaja,paralta,imparbaja,imparalta) {
+
+    const indiceAleatorio1 = Math.floor(Math.random() * guerracosa.length);
+    let valorElegido1 = guerracosa[indiceAleatorio1];
+    let valorElegido2
+    if(valorElegido1=="GUERRA"){
+        const indiceAleatorio2 = Math.floor(Math.random() * guerra.length);
+        valorElegido2 = guerra[indiceAleatorio2];
+    }else{
+        const indiceAleatorio2 = Math.floor(Math.random() * cosa.length);
+        valorElegido2 = cosa[indiceAleatorio2];
+    }
+
+    const indiceAleatorio3 = Math.floor(Math.random() * parimpar.length);
+    let valorElegido3 = parimpar[indiceAleatorio3];
+
+    
+    const indiceAleatorio4 = Math.floor(Math.random() * alrabaja.length);
+    let valorElegido4 = alrabaja[indiceAleatorio4];
+
+    let valorElegido5
+
+    if(valorElegido3=="par"&&valorElegido4=="baja"){
+        const indiceAleatorio5 = Math.floor(Math.random() * parbaja.length);
+        valorElegido5 = parbaja[indiceAleatorio5];
+    }else if(valorElegido3=="par"&&valorElegido4=="alta"){
+        const indiceAleatorio5 = Math.floor(Math.random() * paralta.length);
+        valorElegido5 = paralta[indiceAleatorio5];
+
+    }else if(valorElegido3=="impar"&&valorElegido4=="alta"){
+        const indiceAleatorio5 = Math.floor(Math.random() * imparalta.length);
+        valorElegido5 = imparalta[indiceAleatorio5];
+
+    }else{
+        const indiceAleatorio5 = Math.floor(Math.random() * imparbaja.length);
+        valorElegido5 = imparbaja[indiceAleatorio5];
+
+    }
+
+
+
+    
+    return [valorElegido1, valorElegido2, valorElegido3, valorElegido4,valorElegido5];
+    
 }
+//////////////////////////////////////ELECCION DE CARTA//////////////////////////////////////////////////
 
-function elegirValores(array1, array2) {
-    const indiceAleatorio1 = Math.floor(Math.random() * array1.length);
-    const valorElegido1 = array1[indiceAleatorio1];
-
-    const indiceAleatorio2 = Math.floor(Math.random() * array2.length);
-    const valorElegido2 = array2[indiceAleatorio2];
-
-    return [valorElegido1, valorElegido2];
-}
-
+/*
 function tienenValoresIguales(arr1, arr2) {
     return arr1.some(valor => arr2.includes(valor));
 }
-
+*/
 function buscaValor(array,valorBuscado){
     return array.includes(valorBuscado);
 }
 
+/*
 function continuar(){
     if(fase==2){
+        eleccion.loop=true;
+        eleccion.play();
+        acierto.pause();
+        acierto.currentTime=0;
         document.getElementById("h3").innerHTML=" ";
         document.getElementById('continuar').style.display="none";
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
@@ -139,6 +260,10 @@ function continuar(){
         document.getElementById('oro').style.backgroundImage = `url(./img/ORO.png)`;
         document.getElementById('copa').style.backgroundImage = `url(./img/COPA.png)`;}
     }else if(fase==3){
+        eleccion.loop=true;
+        eleccion.play();
+        acierto.pause();
+        acierto.currentTime=0;
         document.getElementById("h3").innerHTML=" ";
         document.getElementById('par').style.backgroundImage = `url(./img/${carta[0]}PAR.png)`;
         document.getElementById('impar').style.backgroundImage = `url(./img/${carta[0]}IMPAR.png)`;
@@ -148,6 +273,10 @@ function continuar(){
         document.getElementById('impar').style.display="block";
         
     }else if(fase==4){
+        eleccion.loop=true;
+        eleccion.play();
+        acierto.pause();
+        acierto.currentTime=0;
         document.getElementById("h3").innerHTML=" ";
         document.getElementById('alta').style.backgroundImage = `url(./img/${carta[0]+valorguia}ALTA.png)`;
         document.getElementById('baja').style.backgroundImage = `url(./img/${carta[0]}${valorguia}BAJA.png)`;
@@ -155,9 +284,13 @@ function continuar(){
         document.getElementById('continuar').style.display="none";
         document.getElementById('alta').style.display="block";
         document.getElementById('baja').style.display="block";
+        
     }else if(fase==5){
         document.getElementById("h3").innerHTML=" ";
-        
+        eleccion.loop=true;
+        eleccion.play();
+        acierto.pause();
+        acierto.currentTime=0;
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         document.getElementById('continuar').style.display="none";
         if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, baja)){
@@ -197,10 +330,7 @@ function continuar(){
         }
     }
 }
-
-
-
-
+/*
 function compararConArrayAnterior(arrayActual) {
     
     elecciones[turno] = tienenValoresIguales(carta, arrayActual);
@@ -226,6 +356,12 @@ function compararConArrayAnterior(arrayActual) {
             document.getElementById("h3").innerHTML=" ";
         
             if(ganadores.length!=0){
+                acierto.loop=true;
+                eleccion.pause();
+                acierto.play();
+                eleccion.currentTime=0;
+
+        
                 for(i=0;i<ganadores.length;i++){
 
                     document.getElementById("h3").innerHTML +=  ganadores[i] + " / " ;
@@ -242,6 +378,10 @@ function compararConArrayAnterior(arrayActual) {
 
                     document.getElementById("h3").innerHTML +=  carta[i] + " " ;
                 }
+                perdiste.loop=true;
+                perdiste.play();
+                eleccion.pause();
+                eleccion.currentTime=0;
                 document.getElementById('reiniciar').style.display="block";
                 asignarTextoElemento('p',`NO ADIVINO NADIE`);
                 document.getElementById('jugar').style.display="block";
@@ -296,6 +436,10 @@ function compararConValor (valorPalo){
                document.getElementById("h3").innerHTML +=  ganadores[i] + " / " ;
             }
             if(fase==5){
+               ganaste.loop=true;
+               ganaste.play();
+               eleccion.pause();
+               eleccion.currentTime=0;
                asignarTextoElemento('p',`DALE CAMPEÓN, DALE CAMPEÓN!!!`);
                document.getElementById('reiniciar').style.display="block";
                document.getElementById('jugar').style.display="block";
@@ -305,6 +449,10 @@ function compararConValor (valorPalo){
                fase=1;
                }
             else{
+                acierto.loop=true;
+                eleccion.pause();
+                acierto.play();
+                eleccion.currentTime=0;
                 document.getElementById('continuar').style.display="block";
                 asignarTextoElemento('p',`ADIVINARON Y PASAN DE RONDA`);
                 jugadores=ganadores;
@@ -315,10 +463,15 @@ function compararConValor (valorPalo){
             }
         }
         else{
+
             for(i=0;i<carta.length;i++){
 
                 document.getElementById("h3").innerHTML +=  carta[i]+ "  " ;
             }
+            perdiste.loop=true;
+            perdiste.play();
+            eleccion.pause();
+            eleccion.currentTime=0;
             document.getElementById('reiniciar').style.display="block";
             asignarTextoElemento('p',`NO ADIVINO NADIE`);
             document.getElementById('jugar').style.display="block";
@@ -333,6 +486,6 @@ function compararConValor (valorPalo){
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
     }
 }
-
+*/
 
 condicionesIniciales();
