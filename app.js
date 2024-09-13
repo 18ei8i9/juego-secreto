@@ -6,8 +6,8 @@ const palo = ["ORO", "COPA","ESPADA", "BASTO"];
 const guerracosa = ["GUERRA", "COSA"];
 const guerra = ["ESPADA", "BASTO"];
 const cosa = ["ORO", "COPA"];
-const parimpar = ["par","impar"];
-const alrabaja = ["alta","baja"];
+const parimpar = ["PAR","IMPAR"];
+const alrabaja = ["ALTA","BAJA"];
 const paralta = [8,10,12];
 const parbaja = [2,4,6];
 const imparalta = [7,9,11];
@@ -68,6 +68,11 @@ function compararValor(valor){
         ganaste.pause();
         ganaste.currentTime=0;
         let nombre = document.getElementById("nombre").value;
+        console.log(valor);
+        console.log(turno);
+        console.log(jugadores);
+        console.log(ganadores);
+        console.log(fase);
         
         if(nombre !==""){
             jugadoresiniciales.push(nombre);
@@ -79,7 +84,7 @@ function compararValor(valor){
         document.getElementById("h3").innerHTML = " " ;
         for(i=0;i<jugadoresiniciales.length;i++){
 
-            document.getElementById("h3").innerHTML +=  jugadoresiniciales[i] + " " ;
+            document.getElementById("h3").innerHTML +=  jugadoresiniciales[i] + "</br>" ;
         }        
     }
     else if(valor=="empezar"){
@@ -107,10 +112,12 @@ function compararValor(valor){
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`)
         console.log(carta);
         console.log(valor);
+        console.log(turno);
+        console.log(jugadores);
         console.log(ganadores);
         console.log(fase);
     }
-    if(valor=="continuar"){
+    else if(valor=="continuar"){
         eleccion.loop=true;
         eleccion.play();
         acierto.pause();
@@ -119,7 +126,7 @@ function compararValor(valor){
             document.getElementById("h3").innerHTML=" ";
             document.getElementById('boton3').style.display="none";
             asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
-            if(carta[0]=="guerra"){
+            if(carta[0]=="GUERRA"){
                 modBoton('btnarriba',"ESPADA");
                 modBoton('btnabajo',"BASTO");
             }
@@ -128,8 +135,22 @@ function compararValor(valor){
                 modBoton('btnabajo',"COPA");
             }
         }
+        else if(fase==3){
+            document.getElementById("h3").innerHTML=" ";
+            document.getElementById('boton3').style.display="none";
+            asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
+            modBoton('btnarriba',`${carta[1]}PAR`);
+            modBoton('btnabajo',`${carta[1]}IMPAR`);
+            }
+        else if(fase==4){
+            document.getElementById("h3").innerHTML=" ";
+            document.getElementById('boton3').style.display="none";
+            asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
+            modBoton('btnarriba',`${carta[2]}ALTA`);
+            modBoton('btnabajo',`${carta[2]}BAJA`);
+            }
     }
-    else {
+    else{
         console.log(valor);
         console.log(ganadores);
         console.log(fase);
@@ -137,8 +158,12 @@ function compararValor(valor){
         if(buscaValor(carta,valor)){
             ganadores.push(jugadores[turno]);
         }
-        turno++;
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
+        console.log(valor);
+        console.log(turno);
+        console.log(jugadores);
+        console.log(ganadores);
+        console.log("averquemierdapasa");
+
         if(turno==jugadores.length-1){
             document.getElementById('btnarriba').style.display="none";
             document.getElementById('btnabajo').style.display="none";
@@ -158,11 +183,13 @@ function compararValor(valor){
                  turno=0;
                  ganadores=[];
                  fase++; }
-        }
+        }else{
+        turno++;
+        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
         console.log(valor);
         console.log(ganadores);
         console.log(fase);
-        
+        }
 
     }
 
@@ -173,7 +200,7 @@ function modBoton(boton,variable){
     document.getElementById(`${boton}`).style.display='block';
     document.getElementById(`${boton}`).textContent=`${variable}`;
     document.getElementById(`${boton}`).value=`${variable}`;
-    document.getElementById(`${boton}`).style.backgroundImage=`url(./img/${variable}).png`;
+    document.getElementById(`${boton}`).style.backgroundImage=`url(./img/${variable}.png)`;
     
 
 }
@@ -203,14 +230,14 @@ function elegirValores(guerracosa, guerra, cosa, parimpar,alrabaja,parbaja,paral
 
     let valorElegido5
 
-    if(valorElegido3=="par"&&valorElegido4=="baja"){
+    if(valorElegido3=="PAR"&&valorElegido4=="BAJA"){
         const indiceAleatorio5 = Math.floor(Math.random() * parbaja.length);
         valorElegido5 = parbaja[indiceAleatorio5];
-    }else if(valorElegido3=="par"&&valorElegido4=="alta"){
+    }else if(valorElegido3=="PAR"&&valorElegido4=="ALTA"){
         const indiceAleatorio5 = Math.floor(Math.random() * paralta.length);
         valorElegido5 = paralta[indiceAleatorio5];
 
-    }else if(valorElegido3=="impar"&&valorElegido4=="alta"){
+    }else if(valorElegido3=="IMPAR"&&valorElegido4=="ALTA"){
         const indiceAleatorio5 = Math.floor(Math.random() * imparalta.length);
         valorElegido5 = imparalta[indiceAleatorio5];
 
@@ -223,7 +250,7 @@ function elegirValores(guerracosa, guerra, cosa, parimpar,alrabaja,parbaja,paral
 
 
     
-    return [valorElegido1, valorElegido2, valorElegido3, valorElegido4,valorElegido5];
+    return [valorElegido1, valorElegido2, valorElegido2+valorElegido3, valorElegido2+valorElegido3+valorElegido4,valorElegido5];
     
 }
 //////////////////////////////////////ELECCION DE CARTA//////////////////////////////////////////////////
