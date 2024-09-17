@@ -48,13 +48,13 @@ function condicionesIniciales() {                              //primer pantalla
     document.getElementById('boton2').value="agregar";           //asigno value al boton
 }
 //////////////////////////CAMBIA BOTONES///////////////////////////////////////////////////////////////
-    function modBoton(boton,variable){
-        document.getElementById(boton).style.display='block';
-        document.getElementById(boton).textContent=variable;
-        document.getElementById(boton).value=variable;
-        document.getElementById(boton).style.backgroundImage=`url(./img/${variable}.png)`;
+function modBoton(boton,variable){
+    document.getElementById(boton).style.display='block';
+    document.getElementById(boton).textContent=variable;
+    document.getElementById(boton).value=variable;
+    document.getElementById(boton).style.backgroundImage=`url(./img/${variable}.png)`;
     
-    }
+}
 //////////////////////////CAMBIA BOTONES///////////////////////////////////////////////////////////////
 
     
@@ -220,12 +220,13 @@ function compararValor(valor){
                 fase=1;
                
             }
-        }else{
-        turno++;
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
-        console.log(valor);
-        console.log(ganadores);
-        console.log(fase);
+        }
+        else{
+            turno++;
+            asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
+            console.log(valor);
+            console.log(ganadores);
+            console.log(fase);
         }
 
     }
