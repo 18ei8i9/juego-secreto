@@ -207,7 +207,7 @@ function compararValor(valor){
                 document.getElementById(`boton2`).value=`empezar`;
                 document.getElementById(`boton3`).style.display='block';
                 document.getElementById(`boton3`).textContent=`REINICIAR`;
-                document.getElementById(`boton3`).addEventListener("click",condicionesIniciales)   ;
+                //document.getElementById(`boton3`).addEventListener("click",condicionesIniciales)   ;
             
                 perdiste.loop=true;
                 perdiste.play();
