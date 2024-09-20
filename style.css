@@ -83,14 +83,13 @@ img{
 
 .container__input {
     width: 80%;
-    height: 72px;
+    height: 89px;
     border-radius: 16px;
     background-color: #FFF;
     border: none;
-    color: black;
+    color: steelblue;
     text-align: center;
-    font-size: 3em;
-    font-weight: 700;
+    font-size: 80px;
     font-family: 'Banger' , Banger ;
     
 }
@@ -116,6 +115,6 @@ button {
 }
 
 .texto__parrafo {
-    font-size: 32px;
+    font-size: 70px;
     font-weight: 400;
 }
