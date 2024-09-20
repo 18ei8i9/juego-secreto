@@ -216,12 +216,11 @@ function compararValor(valor){
                  ganadores=[];
                  fase++; }
             else{
-                modBoton('boton1',`${carta[1]}${carta[4]}`);
-              
-                document.getElementById(`boton2`).style.display='block';
-                document.getElementById(`boton2`).textContent=`JUGAR DE NUEVO`;
-                document.getElementById(`boton2`).value=`empezar`;
+                
+                modBoton(`boton1`,carta[1]+carta[4]);
+                modBoton(`boton2`,"JUGAR DE NUEVO");
                 modBoton(`boton3`,"REINICIAR");
+        
                 perdiste.loop=true;
                 perdiste.play();
                 eleccion.pause();
