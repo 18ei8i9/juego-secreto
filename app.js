@@ -24,6 +24,15 @@ let acierto = new Audio("./audio/acertado.mp3");
 let ganaste = new Audio("./audio/ganaste.mp3");
 let perdiste = new Audio("./audio/perdiste.mp3");
 
+function limpiar(){
+    document.getElementById('btnarriba').style.display="none"; //este boton no se usa ahora
+    document.getElementById('btnabajo').style.display="none";  //este boton no se usa ahora
+    document.getElementById('boton1').style.display="none";      //este boton no se usa ahora
+    document.getElementById('boton2').style.display="none";      //este boton no se usa ahora
+    document.getElementById('boton3').style.display="none";      //este boton no se usa ahora
+    document.getElementById("nombre").style.display="none";
+    document.getElementById("h3").style.display="none";
+}
 
 
 
@@ -31,11 +40,8 @@ let perdiste = new Audio("./audio/perdiste.mp3");
 function condicionesIniciales() {                              //primer pantalla, es la primer funcion que se carga, luego se carga de vuelta con boton "reiniciar"
     fase=0;                                                    //indica que se esta en la etapa de carga
     jugadoresiniciales=[];                                     //aca se van cargando los participantes, se vuelve a poner en cero con boton "reiniciar"  
+    limpiar();
     document.getElementById('nombre').style.display="block";   //aca se escriben los jugadores
-    document.getElementById('btnarriba').style.display="none"; //este boton no se usa ahora
-    document.getElementById('btnabajo').style.display="none";  //este boton no se usa ahora
-    document.getElementById('boton1').style.display="none";      //este boton no se usa ahora
-    document.getElementById('boton3').style.display="none";      //este boton no se usa ahora
     modBoton("boton2","AGREGAR");
 }
 //////////////////////////CAMBIA BOTONES///////////////////////////////////////////////////////////////
@@ -59,11 +65,7 @@ function compararValor(valor){
         ganaste.pause();
         ganaste.currentTime=0;
         let nombre = document.getElementById("nombre").value;
-        console.log(valor);
-        console.log(turno);
-        console.log(jugadores);
-        console.log(ganadores);
-        console.log(fase);
+
         
         if(nombre !==""){
             jugadoresiniciales.push(nombre);
@@ -78,17 +80,13 @@ function compararValor(valor){
         }        
     }
     else if(valor=="EMPEZAR"||valor=="JugarDeNuevo"){
-        document.getElementById("nombre").style.display="none";
-        document.getElementById("h3").innerHTML = " " ;
+        limpiar();
         eleccion.loop=true;
         eleccion.play();
         perdiste.pause();
         perdiste.currentTime=0;
         ganaste.pause();
         ganaste.currentTime=0;
-        document.getElementById('boton1').style.display="none"; //este boton no se usa ahora
-        document.getElementById('boton2').style.display="none"; //este boton no se usa ahora
-        document.getElementById('boton3').style.display="none"; //este boton no se usa ahora
         modBoton("btnarriba","GUERRA");
         modBoton("btnabajo","COSA");
         jugadores=jugadoresiniciales;
@@ -107,8 +105,7 @@ function compararValor(valor){
         acierto.pause();
         acierto.currentTime=0;
         if(fase==2){
-            document.getElementById("h3").innerHTML=" ";
-            document.getElementById('boton3').style.display="none";
+            limpiar();
             asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
             if(carta[0]=="GUERRA"){
                 modBoton('btnarriba',"ESPADA");
@@ -120,15 +117,13 @@ function compararValor(valor){
             }
         }
         else if(fase==3){
-            document.getElementById("h3").innerHTML=" ";
-            document.getElementById('boton3').style.display="none";
+            limpiar();
             asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
             modBoton('btnarriba',`${carta[1]}PAR`);
             modBoton('btnabajo',`${carta[1]}IMPAR`);
             }
         else if(fase==4){
-            document.getElementById("h3").innerHTML=" ";
-            document.getElementById('boton3').style.display="none";
+            limpiar();
             asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
             modBoton('btnarriba',`${carta[2]}ALTA`);
             modBoton('btnabajo',`${carta[2]}BAJA`);
@@ -168,8 +163,7 @@ function compararValor(valor){
         }
 
         if(turno==jugadores.length-1){
-            document.getElementById('btnarriba').style.display="none";
-            document.getElementById('btnabajo').style.display="none";
+            limpiar();
             modBoton("boton3","CONTINUAR");
             if(ganadores.length!=0){
                 for(i=0;i<ganadores.length;i++){
@@ -205,9 +199,7 @@ function compararValor(valor){
         else{
             turno++;
             asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
-            console.log(valor);
-            console.log(ganadores);
-            console.log(fase);
+
         }
 
     }
