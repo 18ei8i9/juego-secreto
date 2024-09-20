@@ -87,7 +87,7 @@ function compararValor(valor){
             document.getElementById("h3").innerHTML +=  jugadoresiniciales[i] + "</br>" ;
         }        
     }
-    else if(valor=="empezar"){
+    else if(valor=="empezar"||valor=="JUGAR DE NUEVO"){
         document.getElementById("nombre").style.display="none";
         document.getElementById("h3").innerHTML = " " ;
         eleccion.loop=true;
@@ -117,6 +117,10 @@ function compararValor(valor){
         console.log(jugadores);
         console.log(ganadores);
         console.log(fase);
+    }
+    else if(valor=="REINICIAR"){
+        condicionesIniciales();
+
     }
     else if(valor=="continuar"){
         eleccion.loop=true;
@@ -162,6 +166,22 @@ function compararValor(valor){
         }
     
     }
+    else if(carta[1]+carta[4]==valor){
+        ganaste.loop=true;
+        ganaste.play();
+        eleccion.pause();
+        eleccion.currentTime=0;
+        asignarTextoElemento('p',`DALE CAMPEÓN, DALE CAMPEÓN!!!`);
+        jugadores=[];
+        ganadores=[];
+        turno=0;
+        fase=1;
+        modBoton(`boton1`,carta[1]+carta[4]);
+        modBoton(`boton2`,"JUGAR DE NUEVO");
+        modBoton(`boton3`,"REINICIAR");
+        
+
+    }
     else{
         console.log(valor);
         console.log(ganadores);
@@ -197,18 +217,11 @@ function compararValor(valor){
                  fase++; }
             else{
                 modBoton('boton1',`${carta[1]}${carta[4]}`);
-                //modBoton('boton2',`EMPEZAR`);
-               // document.getElementById('boton2').textContent="JUGAR DE NUEVO";
-                //modBoton('boton3',`REINICIAR`);
-                //document.getElementById('boton3').textContent="REINICIAR";
-                //document.getElementById('boton3').onclick=condicionesIniciales();
+              
                 document.getElementById(`boton2`).style.display='block';
                 document.getElementById(`boton2`).textContent=`JUGAR DE NUEVO`;
                 document.getElementById(`boton2`).value=`empezar`;
-                document.getElementById(`boton3`).style.display='block';
-                document.getElementById(`boton3`).textContent=`REINICIAR`;
-                //document.getElementById(`boton3`).addEventListener("click",condicionesIniciales)   ;
-            
+                modBoton(`boton3`,"REINICIAR");
                 perdiste.loop=true;
                 perdiste.play();
                 eleccion.pause();
