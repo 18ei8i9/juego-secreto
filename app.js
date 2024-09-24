@@ -23,13 +23,7 @@ let eleccion = new Audio("./audio/inicio.mp3");
 let acierto = new Audio("./audio/acertado.mp3");
 let ganaste = new Audio("./audio/ganaste.mp3");
 let perdiste = new Audio("./audio/perdiste.mp3");
-// para los mensajes del juego
 
-function asignarTextoElemento(elemento, texto) {
-    let elementoHTML = document.querySelector(elemento);
-    elementoHTML.innerHTML = texto;
-    return;
-}
 
 
 
@@ -42,10 +36,7 @@ function condicionesIniciales() {                              //primer pantalla
     document.getElementById('btnabajo').style.display="none";  //este boton no se usa ahora
     document.getElementById('boton1').style.display="none";      //este boton no se usa ahora
     document.getElementById('boton3').style.display="none";      //este boton no se usa ahora
-    
-    document.getElementById('boton2').style.display="block";     // este boton se activa
-    document.getElementById('boton2').textContent="AGREGAR";     //asigno texto al boton
-    document.getElementById('boton2').value="agregar";           //asigno value al boton
+    modBoton("boton2","AGREGAR");
 }
 //////////////////////////CAMBIA BOTONES///////////////////////////////////////////////////////////////
 function modBoton(boton,variable){
@@ -62,7 +53,7 @@ function modBoton(boton,variable){
 
 
 function compararValor(valor){
-    if(valor=="agregar"){
+    if(valor=="AGREGAR"){
         perdiste.pause();
         perdiste.currentTime=0;
         ganaste.pause();
@@ -77,17 +68,16 @@ function compararValor(valor){
         if(nombre !==""){
             jugadoresiniciales.push(nombre);
             document.getElementById('nombre').value = '';
-            document.getElementById('boton3').style.display="block";
-            document.getElementById('boton3').textContent="EMPEZAR";
-            document.getElementById('boton3').value="empezar";  
+            modBoton("boton3","EMPEZAR");
         }
+
         document.getElementById("h3").innerHTML = " " ;
         for(i=0;i<jugadoresiniciales.length;i++){
 
             document.getElementById("h3").innerHTML +=  jugadoresiniciales[i] + "</br>" ;
         }        
     }
-    else if(valor=="empezar"||valor=="JUGAR DE NUEVO"){
+    else if(valor=="EMPEZAR"||valor=="JugarDeNuevo"){
         document.getElementById("nombre").style.display="none";
         document.getElementById("h3").innerHTML = " " ;
         eleccion.loop=true;
@@ -99,30 +89,19 @@ function compararValor(valor){
         document.getElementById('boton1').style.display="none"; //este boton no se usa ahora
         document.getElementById('boton2').style.display="none"; //este boton no se usa ahora
         document.getElementById('boton3').style.display="none"; //este boton no se usa ahora
-        document.getElementById('btnarriba').style.display="block"; //este boton no se usa ahora
-        document.getElementById('btnabajo').style.display="block";  //este boton no se usa ahora
-        document.getElementById('btnarriba').textContent="GUERRA";     //asigno texto al boton
-        document.getElementById('btnarriba').value="GUERRA";           //asigno value al boton
-        document.getElementById('btnarriba').style.backgroundImage = `url(./img/GUERRA.png)`;
-        document.getElementById('btnabajo').style.backgroundImage = `url(./img/COSA.png)`;
-        document.getElementById('btnabajo').textContent="COSA";     //asigno texto al boton
-        document.getElementById('btnabajo').value="COSA";           //asigno value al boton
+        modBoton("btnarriba","GUERRA");
+        modBoton("btnabajo","COSA");
         jugadores=jugadoresiniciales;
         fase=1;
         carta=elegirValores(guerracosa, guerra, cosa, parimpar,alrabaja,parbaja,paralta,imparbaja,imparalta);
         asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`)
         console.log(carta);
-        console.log(valor);
-        console.log(turno);
-        console.log(jugadores);
-        console.log(ganadores);
-        console.log(fase);
     }
     else if(valor=="REINICIAR"){
         condicionesIniciales();
 
     }
-    else if(valor=="continuar"){
+    else if(valor=="CONTINUAR"){
         eleccion.loop=true;
         eleccion.play();
         acierto.pause();
@@ -183,25 +162,15 @@ function compararValor(valor){
 
     }
     else{
-        console.log(valor);
-        console.log(ganadores);
-        console.log(fase);
 
         if(buscaValor(carta,valor)){
             ganadores.push(jugadores[turno]);
         }
-        console.log(valor);
-        console.log(turno);
-        console.log(jugadores);
-        console.log(ganadores);
-        console.log("averquemierdapasa");
 
         if(turno==jugadores.length-1){
             document.getElementById('btnarriba').style.display="none";
             document.getElementById('btnabajo').style.display="none";
-            document.getElementById('boton3').style.display="block";
-            document.getElementById('boton3').textContent="CONTINUAR";
-            document.getElementById('boton3').value="continuar";
+            modBoton("boton3","CONTINUAR");
             if(ganadores.length!=0){
                 for(i=0;i<ganadores.length;i++){
                     document.getElementById("h3").innerHTML +=  ganadores[i] + "</br>";
@@ -218,7 +187,7 @@ function compararValor(valor){
             else{
                 
                 modBoton(`boton1`,carta[1]+carta[4]);
-                modBoton(`boton2`,"JUGAR DE NUEVO");
+                modBoton(`boton2`,"JugarDeNuevo");
                 modBoton(`boton3`,"REINICIAR");
         
                 perdiste.loop=true;
@@ -313,256 +282,12 @@ function tienenValoresIguales(arr1, arr2) {
 function buscaValor(array,valorBuscado){
     return array.includes(valorBuscado);
 }
+// para los mensajes del juego
 
-/*
-function continuar(){
-    if(fase==2){
-        eleccion.loop=true;
-        eleccion.play();
-        acierto.pause();
-        acierto.currentTime=0;
-        document.getElementById("h3").innerHTML=" ";
-        document.getElementById('continuar').style.display="none";
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
-        if(tienenValoresIguales(guerra, carta)){
-            
-        document.getElementById('espada').style.display="block";
-        document.getElementById('basto').style.display="block";
-        document.getElementById('espada').style.backgroundImage = `url(./img/ESPADA.png)`;
-        document.getElementById('basto').style.backgroundImage = `url(./img/BASTO.png)`;}
-        else if(tienenValoresIguales(cosa, carta)){
-            
-        document.getElementById('oro').style.display="block";
-        document.getElementById('copa').style.display="block";
-        document.getElementById('oro').style.backgroundImage = `url(./img/ORO.png)`;
-        document.getElementById('copa').style.backgroundImage = `url(./img/COPA.png)`;}
-    }else if(fase==3){
-        eleccion.loop=true;
-        eleccion.play();
-        acierto.pause();
-        acierto.currentTime=0;
-        document.getElementById("h3").innerHTML=" ";
-        document.getElementById('par').style.backgroundImage = `url(./img/${carta[0]}PAR.png)`;
-        document.getElementById('impar').style.backgroundImage = `url(./img/${carta[0]}IMPAR.png)`;
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
-        document.getElementById('continuar').style.display="none";
-        document.getElementById('par').style.display="block";
-        document.getElementById('impar').style.display="block";
-        
-    }else if(fase==4){
-        eleccion.loop=true;
-        eleccion.play();
-        acierto.pause();
-        acierto.currentTime=0;
-        document.getElementById("h3").innerHTML=" ";
-        document.getElementById('alta').style.backgroundImage = `url(./img/${carta[0]+valorguia}ALTA.png)`;
-        document.getElementById('baja').style.backgroundImage = `url(./img/${carta[0]}${valorguia}BAJA.png)`;
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
-        document.getElementById('continuar').style.display="none";
-        document.getElementById('alta').style.display="block";
-        document.getElementById('baja').style.display="block";
-        
-    }else if(fase==5){
-        document.getElementById("h3").innerHTML=" ";
-        eleccion.loop=true;
-        eleccion.play();
-        acierto.pause();
-        acierto.currentTime=0;
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
-        document.getElementById('continuar').style.display="none";
-        if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, baja)){
-            document.getElementById('2').style.display="block";
-            document.getElementById('4').style.display="block";
-            document.getElementById('6').style.display="block";
-            document.getElementById('2').style.backgroundImage = `url(./img/${carta[0]}2.png)`;
-            document.getElementById('4').style.backgroundImage = `url(./img/${carta[0]}4.png)`;
-            document.getElementById('6').style.backgroundImage = `url(./img/${carta[0]}6.png)`;
-            
-            
-        }else if(tienenValoresIguales(carta, par) & tienenValoresIguales(carta, alta)){
-            document.getElementById('8').style.display="block";
-            document.getElementById('10').style.display="block";
-            document.getElementById('12').style.display="block";
-            document.getElementById('8').style.backgroundImage = `url(./img/${carta[0]}8.png)`;
-            document.getElementById('10').style.backgroundImage = `url(./img/${carta[0]}10.png)`;
-            document.getElementById('12').style.backgroundImage = `url(./img/${carta[0]}12.png)`;
-
-        }else if(tienenValoresIguales(carta, impar) & tienenValoresIguales(carta, baja)){
-            document.getElementById('1').style.display="block";
-            document.getElementById('3').style.display="block";
-            document.getElementById('5').style.display="block";
-            document.getElementById('1').style.backgroundImage = `url(./img/${carta[0]}1.png)`;
-            document.getElementById('3').style.backgroundImage = `url(./img/${carta[0]}3.png)`;
-            document.getElementById('5').style.backgroundImage = `url(./img/${carta[0]}5.png)`;
-
-
-        }else{
-            document.getElementById('7').style.display="block";
-            document.getElementById('9').style.display="block";
-            document.getElementById('11').style.display="block";
-            document.getElementById('7').style.backgroundImage = `url(./img/${carta[0]}7.png)`;
-            document.getElementById('9').style.backgroundImage = `url(./img/${carta[0]}9.png)`;
-            document.getElementById('11').style.backgroundImage = `url(./img/${carta[0]}11.png)`;
-
-        }
-    }
+function asignarTextoElemento(elemento, texto) {
+    let elementoHTML = document.querySelector(elemento);
+    elementoHTML.innerHTML = texto;
+    return;
 }
-/*
-function compararConArrayAnterior(arrayActual) {
-    
-    elecciones[turno] = tienenValoresIguales(carta, arrayActual);
-    if(elecciones[turno]){
-        ganadores.push(jugadores[turno]);
-    }
-    console.log(turno);
-    console.log(elecciones);
-    valorguia = tienenValoresIguales(par, arrayActual)?"PAR":"IMPAR" ;
-    console.log(`./img/${carta[0]+valorguia}BAJA.png`);
-    
-    if(turno==jugadores.length-1){
-        
-        
-
-        
-            document.getElementById('guerra').style.display="none";
-            document.getElementById('cosa').style.display="none";
-            document.getElementById('par').style.display="none";
-            document.getElementById('impar').style.display="none";
-            document.getElementById('alta').style.display="none";
-            document.getElementById('baja').style.display="none";
-            document.getElementById("h3").innerHTML=" ";
-        
-            if(ganadores.length!=0){
-                acierto.loop=true;
-                eleccion.pause();
-                acierto.play();
-                eleccion.currentTime=0;
-
-        
-                for(i=0;i<ganadores.length;i++){
-
-                    document.getElementById("h3").innerHTML +=  ganadores[i] + " / " ;
-                }
-                document.getElementById('continuar').style.display="block";
-                asignarTextoElemento('p',`ADIVINARON Y PASAN DE RONDA`);
-                jugadores=ganadores;
-                turno=0;
-                ganadores=[];
-                elecciones=[];
-                fase++;}
-            else{
-                for(i=0;i<carta.length;i++){
-
-                    document.getElementById("h3").innerHTML +=  carta[i] + " " ;
-                }
-                perdiste.loop=true;
-                perdiste.play();
-                eleccion.pause();
-                eleccion.currentTime=0;
-                document.getElementById('reiniciar').style.display="block";
-                asignarTextoElemento('p',`NO ADIVINO NADIE`);
-                document.getElementById('jugar').style.display="block";
-                jugadores=[];
-                ganadores=[];
-                turno=0;
-                fase=1;
-               
-            }
-        
-
-        }
-    else {
-        console.log(turno);
-        
-        turno++;
-        console.log(turno);
-        console.log(ganadores);
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
-    }
-    
- }
-
-function compararConValor (valorPalo){
-    elecciones[turno] = fase==5 ? buscaValor(carta,parseInt(valorPalo)):buscaValor(carta,valorPalo);
-    if(elecciones[turno]){
-        ganadores.push(jugadores[turno]);
-    }
-    console.log(turno);
-    console.log(elecciones);
-    console.log(ganadores);
-    if(turno==jugadores.length-1){
-        document.getElementById('copa').style.display="none";
-        document.getElementById('oro').style.display="none";
-        document.getElementById('espada').style.display="none";
-        document.getElementById('basto').style.display="none";
-        document.getElementById('1').style.display="none";
-        document.getElementById('2').style.display="none";
-        document.getElementById('3').style.display="none";
-        document.getElementById('4').style.display="none";
-        document.getElementById('5').style.display="none";
-        document.getElementById('6').style.display="none";
-        document.getElementById('7').style.display="none";
-        document.getElementById('8').style.display="none";
-        document.getElementById('9').style.display="none";
-        document.getElementById('10').style.display="none";
-        document.getElementById('11').style.display="none";
-        document.getElementById('12').style.display="none";
-        document.getElementById("h3").innerHTML=" ";
-        if(ganadores.length!=0){
-            for(i=0;i<ganadores.length;i++){
-               document.getElementById("h3").innerHTML +=  ganadores[i] + " / " ;
-            }
-            if(fase==5){
-               ganaste.loop=true;
-               ganaste.play();
-               eleccion.pause();
-               eleccion.currentTime=0;
-               asignarTextoElemento('p',`DALE CAMPEÓN, DALE CAMPEÓN!!!`);
-               document.getElementById('reiniciar').style.display="block";
-               document.getElementById('jugar').style.display="block";
-               jugadores=[];
-               ganadores=[];
-               turno=0;
-               fase=1;
-               }
-            else{
-                acierto.loop=true;
-                eleccion.pause();
-                acierto.play();
-                eleccion.currentTime=0;
-                document.getElementById('continuar').style.display="block";
-                asignarTextoElemento('p',`ADIVINARON Y PASAN DE RONDA`);
-                jugadores=ganadores;
-                turno=0;
-                ganadores=[];
-                elecciones=[];
-                fase++;
-            }
-        }
-        else{
-
-            for(i=0;i<carta.length;i++){
-
-                document.getElementById("h3").innerHTML +=  carta[i]+ "  " ;
-            }
-            perdiste.loop=true;
-            perdiste.play();
-            eleccion.pause();
-            eleccion.currentTime=0;
-            document.getElementById('reiniciar').style.display="block";
-            asignarTextoElemento('p',`NO ADIVINO NADIE`);
-            document.getElementById('jugar').style.display="block";
-            jugadores=[];
-        }
-    }
-    else {
-        console.log(turno);
-        
-        turno++;
-        
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
-    }
-}
-*/
 
 condicionesIniciales();
