@@ -177,7 +177,7 @@ function compararValor(valor){
         turno=0;
         fase=1;
         modBoton(`boton1`,carta[1]+carta[4]);
-        modBoton(`boton2`,"JUGAR DE NUEVO");
+        modBoton(`boton2`,"JugarDeNuevo");
         modBoton(`boton3`,"REINICIAR");
         
 
