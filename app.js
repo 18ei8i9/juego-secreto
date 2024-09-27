@@ -32,6 +32,7 @@ function limpiar(){
     document.getElementById('boton3').style.display="none";      //este boton no se usa ahora
     document.getElementById("nombre").style.display="none";
     document.getElementById("h3").style.display="none";
+    document.getElementById("imagen").style.display="none";
 }
 
 
@@ -150,7 +151,9 @@ function compararValor(valor){
         ganadores=[];
         turno=0;
         fase=1;
-        modBoton(`boton1`,carta[1]+carta[4]);
+        document.getElementById(`imagen`).style.display="block";
+        document.getElementById(`imagen`).src=`./img/${carta[1]+carta[4]}.png`;
+        //modBoton(`boton1`,carta[1]+carta[4]);
         modBoton(`boton2`,"JugarDeNuevo");
         modBoton(`boton3`,"REINICIAR");
         
@@ -179,8 +182,9 @@ function compararValor(valor){
                  ganadores=[];
                  fase++; }
             else{
-                
-                modBoton(`boton1`,carta[1]+carta[4]);
+                document.getElementById(`imagen`).style.display="block";
+                document.getElementById(`imagen`).src=`./img/${carta[1]+carta[4]}.png`;
+               // modBoton(`boton1`,carta[1]+carta[4]);
                 modBoton(`boton2`,"JugarDeNuevo");
                 modBoton(`boton3`,"REINICIAR");
         
