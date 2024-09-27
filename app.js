@@ -73,11 +73,11 @@ function compararValor(valor){
             document.getElementById('nombre').value = '';
             modBoton("boton3","EMPEZAR");
         }
-
+        document.getElementById("h3").style.display="block";
         document.getElementById("h3").innerHTML = " " ;
         for(i=0;i<jugadoresiniciales.length;i++){
 
-            document.getElementById("h3").innerHTML +=  jugadoresiniciales[i] + "</br>" ;
+            document.getElementById("h3").innerHTML +=  jugadoresiniciales[i] + "   " ;
         }        
     }
     else if(valor=="EMPEZAR"||valor=="JugarDeNuevo"){
@@ -146,6 +146,12 @@ function compararValor(valor){
         ganaste.play();
         eleccion.pause();
         eleccion.currentTime=0;
+        document.getElementById("h3").style.display="block";
+        document.getElementById("h3").innerHTML = " " ;
+        for(i=0;i<ganadores.length;i++){
+
+            document.getElementById("h3").innerHTML +=  ganadores[i] + " | " ;
+        }        
         asignarTextoElemento('p',`DALE CAMPEÓN, DALE CAMPEÓN!!!`);
         jugadores=[];
         ganadores=[];
@@ -169,9 +175,12 @@ function compararValor(valor){
             limpiar();
             modBoton("boton3","CONTINUAR");
             if(ganadores.length!=0){
+                document.getElementById("h3").style.display="block";
+                document.getElementById("h3").innerHTML = " " ;
                 for(i=0;i<ganadores.length;i++){
-                    document.getElementById("h3").innerHTML +=  ganadores[i] + "</br>";
-                 }
+        
+                    document.getElementById("h3").innerHTML +=  ganadores[i] + " | " ;
+                }        
                  acierto.loop=true;
                  eleccion.pause();
                  acierto.play();
