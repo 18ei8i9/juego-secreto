@@ -38,75 +38,33 @@ body {
 
 .btn_arriba, .btn_abajo {
    
-   color:white;
+    color: steelblue;
     height: 50%;
     width: 100%;
-    font-size: 3em;
+    font-size: 100px;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
     background-repeat:no-repeat;
     background-size: contain;
     background-position: center;
-    
+    border: none;
 }
-
-.btnabajo {
-   
-    color: white;
-    height: 50%;
-    width: 100%;
-    font-size: 3em;
-    font-weight: 700;
-    background-image: url("./img/COSA.png");
-    background:round; 
-    background-repeat:no-repeat;
-    background-size: contain;    
-    background-position: center;
-}
-
 
 .boton_1, .boton_2, .boton_3 {
    
-    color: white;
+    color: steelblue;
     height: 30%;
     width: 100%;
-    font-size: 3em;
+    font-size: 100px;
     font-weight: 700;
     background-image: url("./img/COSA.png");
     background:round; 
     background-repeat:no-repeat;
     background-size: contain;    
     background-position: center;
+    border: none;
 }
-
-.btn_2 {
-   
-    color: white;
-    height: 30%;
-    width: 100%;
-    font-size: 3em;
-    font-weight: 700;
-    background-image: url("./img/COSA.png");
-    background:round; 
-    background-repeat:no-repeat;
-    background-size: contain;    
-    background-position: center;
-}
-.btn_3 {
-   
-    color: white;
-    height: 30%;
-    width: 100%;
-    font-size: 3em;
-    font-weight: 700;
-    background-image: url("./img/COSA.png");
-    background:round; 
-    background-repeat:no-repeat;
-    background-size: contain;    
-    background-position: center;
-}
-
 
 img{
     width: 100%;
@@ -144,6 +102,7 @@ img{
     gap: 1px;
     flex-direction: column;
     justify-content: space-evenly;
+    background-color: white;
 }
 
 h3 {
