@@ -33,13 +33,18 @@ function limpiar(){
     document.getElementById("nombre").style.display="none";
     document.getElementById("h3").style.display="none";
     document.getElementById("imagen").style.display="none";
+    document.getElementById("texto").style.display="none";
 }
 
 
 
 //titulo y carga de jugadores
-function condicionesIniciales() {                              //primer pantalla, es la primer funcion que se carga, luego se carga de vuelta con boton "reiniciar"
-    fase=0;                                                    //indica que se esta en la etapa de carga
+function condicionesIniciales() {                             //primer pantalla, es la primer funcion que se carga, luego se carga de vuelta con boton "reiniciar"
+    
+    perdiste.pause();
+    perdiste.currentTime=0;
+    ganaste.pause();
+    ganaste.currentTime=0;fase=0;                                                    //indica que se esta en la etapa de carga
     jugadoresiniciales=[];                                     //aca se van cargando los participantes, se vuelve a poner en cero con boton "reiniciar"  
     limpiar();
     document.getElementById('nombre').style.display="block";   //aca se escriben los jugadores
@@ -77,7 +82,7 @@ function compararValor(valor){
         document.getElementById("h3").innerHTML = " " ;
         for(i=0;i<jugadoresiniciales.length;i++){
 
-            document.getElementById("h3").innerHTML +=  jugadoresiniciales[i] + "   " ;
+            document.getElementById("h3").innerHTML +=  jugadoresiniciales[i] + "      " ;
         }        
     }
     else if(valor=="EMPEZAR"||valor=="JugarDeNuevo"){
@@ -93,7 +98,8 @@ function compararValor(valor){
         jugadores=jugadoresiniciales;
         fase=1;
         carta=elegirValores(guerracosa, guerra, cosa, parimpar,alrabaja,parbaja,paralta,imparbaja,imparalta);
-        asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`)
+        document.getElementById("texto").style.display="block";
+        asignarTextoElemento('p',`${jugadores[turno]}`)
         console.log(carta);
     }
     else if(valor=="REINICIAR"){
@@ -107,7 +113,8 @@ function compararValor(valor){
         acierto.currentTime=0;
         if(fase==2){
             limpiar();
-            asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
+            document.getElementById("texto").style.display="block";
+            asignarTextoElemento('p',`${jugadores[turno]}`);
             if(carta[0]=="GUERRA"){
                 modBoton('btnarriba',"ESPADA");
                 modBoton('btnabajo',"BASTO");
@@ -119,20 +126,24 @@ function compararValor(valor){
         }
         else if(fase==3){
             limpiar();
-            asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
+            document.getElementById("texto").style.display="block";
+            asignarTextoElemento('p',`${jugadores[turno]}`);
             modBoton('btnarriba',`${carta[1]}PAR`);
             modBoton('btnabajo',`${carta[1]}IMPAR`);
             }
         else if(fase==4){
             limpiar();
-            asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
+            document.getElementById("texto").style.display="block";
+            asignarTextoElemento('p',`${jugadores[turno]} `);
             modBoton('btnarriba',`${carta[2]}ALTA`);
             modBoton('btnabajo',`${carta[2]}BAJA`);
             }
         else if(fase==5){
+            limpiar();
             for(i=0;i<cartas.length;i++){
                 if(tienenValoresIguales(cartas[i],carta)){
-                    asignarTextoElemento('p',`${jugadores[turno]} elije una opcion`);
+                    document.getElementById("texto").style.display="block";
+                    asignarTextoElemento('p',`${jugadores[turno]}`);
                     modBoton('boton1',`${carta[1]}${cartas[i][0]}`);
                     modBoton('boton2',`${carta[1]}${cartas[i][1]}`);
                     modBoton('boton3',`${carta[1]}${cartas[i][2]}`);
@@ -142,17 +153,17 @@ function compararValor(valor){
     
     }
     else if(carta[1]+carta[4]==valor){
+        //limpiar();
         ganaste.loop=true;
         ganaste.play();
         eleccion.pause();
         eleccion.currentTime=0;
-        document.getElementById("h3").style.display="block";
-        document.getElementById("h3").innerHTML = " " ;
+        document.getElementById("p").style.display="block";
         for(i=0;i<ganadores.length;i++){
 
-            document.getElementById("h3").innerHTML +=  ganadores[i] + " | " ;
+            document.getElementById("p").innerHTML +=  ganadores[i] + "      " ;
         }        
-        asignarTextoElemento('p',`DALE CAMPEÓN, DALE CAMPEÓN!!!`);
+        //asignarTextoElemento('p',`DALE CAMPEÓN, DALE CAMPEÓN!!!`);
         jugadores=[];
         ganadores=[];
         turno=0;
@@ -174,18 +185,18 @@ function compararValor(valor){
         if(turno==jugadores.length-1){
             limpiar();
             modBoton("boton3","CONTINUAR");
+            
             if(ganadores.length!=0){
                 document.getElementById("h3").style.display="block";
                 document.getElementById("h3").innerHTML = " " ;
                 for(i=0;i<ganadores.length;i++){
         
-                    document.getElementById("h3").innerHTML +=  ganadores[i] + " | " ;
+                    document.getElementById("h3").innerHTML +=  ganadores[i] + "      " ;
                 }        
                  acierto.loop=true;
                  eleccion.pause();
                  acierto.play();
                  eleccion.currentTime=0;
-                 asignarTextoElemento('p',`ADIVINARON`);
                  jugadores=ganadores;
                  turno=0;
                  ganadores=[];
@@ -201,7 +212,7 @@ function compararValor(valor){
                 perdiste.play();
                 eleccion.pause();
                 eleccion.currentTime=0;
-                asignarTextoElemento('p',`NO ADIVINO NADIE`);
+                //asignarTextoElemento('p',`NO ADIVINO NADIE`);
                 jugadores=[];
                 ganadores=[];
                 turno=0;
@@ -211,7 +222,8 @@ function compararValor(valor){
         }
         else{
             turno++;
-            asignarTextoElemento('p',`jugador ${jugadores[turno]} elije una opcion`);
+            document.getElementById("texto").style.display="block";
+            asignarTextoElemento('p',`${jugadores[turno]}`);
 
         }
 

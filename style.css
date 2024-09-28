@@ -107,7 +107,9 @@ body {
 
 h3 {
     font-family: 'Banger' , Banger ;
-    font-size: 42px;
+    font-size: 60px;
+    text-align: center;
+    color: steelblue;
 }
 
 p,
