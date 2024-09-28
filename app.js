@@ -152,30 +152,7 @@ function compararValor(valor){
         }
     
     }
-    else if(carta[1]+carta[4]==valor){
-        //limpiar();
-        ganaste.loop=true;
-        ganaste.play();
-        eleccion.pause();
-        eleccion.currentTime=0;
-        document.getElementById("p").style.display="block";
-        for(i=0;i<ganadores.length;i++){
-
-            document.getElementById("p").innerHTML +=  ganadores[i] + "      " ;
-        }        
-        //asignarTextoElemento('p',`DALE CAMPEÓN, DALE CAMPEÓN!!!`);
-        jugadores=[];
-        ganadores=[];
-        turno=0;
-        fase=1;
-        document.getElementById(`imagen`).style.display="block";
-        document.getElementById(`imagen`).src=`./img/${carta[1]+carta[4]}.png`;
-        //modBoton(`boton1`,carta[1]+carta[4]);
-        modBoton(`boton2`,"JugarDeNuevo");
-        modBoton(`boton3`,"REINICIAR");
-        
-
-    }
+  
     else{
 
         if(buscaValor(carta,valor)||carta[1]+carta[4]==valor){
@@ -184,23 +161,50 @@ function compararValor(valor){
 
         if(turno==jugadores.length-1){
             limpiar();
-            modBoton("boton3","CONTINUAR");
+            
             
             if(ganadores.length!=0){
-                document.getElementById("h3").style.display="block";
-                document.getElementById("h3").innerHTML = " " ;
-                for(i=0;i<ganadores.length;i++){
-        
-                    document.getElementById("h3").innerHTML +=  ganadores[i] + "      " ;
-                }        
-                 acierto.loop=true;
-                 eleccion.pause();
-                 acierto.play();
-                 eleccion.currentTime=0;
-                 jugadores=ganadores;
-                 turno=0;
-                 ganadores=[];
-                 fase++; }
+                if(carta[1]+carta[4]==valor){
+                    document.getElementById(`imagen`).style.display="block";
+                    document.getElementById(`imagen`).src=`./img/${carta[1]+carta[4]}.png`;
+                    //modBoton(`boton1`,carta[1]+carta[4]);
+                    modBoton(`boton2`,"JugarDeNuevo");
+                    modBoton(`boton3`,"REINICIAR");
+                    ganaste.loop=true;
+                    ganaste.play();
+                    eleccion.pause();
+                    eleccion.currentTime=0;
+                    document.getElementById("p").style.display="block";
+                    for(i=0;i<ganadores.length;i++){
+            
+                        document.getElementById("p").innerHTML +=  ganadores[i] + "      " ;
+                    }        
+                    //asignarTextoElemento('p',`DALE CAMPEÓN, DALE CAMPEÓN!!!`);
+                    jugadores=[];
+                    ganadores=[];
+                    turno=0;
+                    fase=1;
+
+            
+                }
+                else{
+                    modBoton("boton3","CONTINUAR");
+                    document.getElementById("h3").style.display="block";
+                    document.getElementById("h3").innerHTML = " " ;
+                    for(i=0;i<ganadores.length;i++){
+            
+                        document.getElementById("h3").innerHTML +=  ganadores[i] + "      " ;
+                    }        
+                    acierto.loop=true;
+                    eleccion.pause();
+                    acierto.play();
+                    eleccion.currentTime=0;
+                    jugadores=ganadores;
+                    turno=0;
+                    ganadores=[];
+                    fase++; 
+                }
+            }
             else{
                 document.getElementById(`imagen`).style.display="block";
                 document.getElementById(`imagen`).src=`./img/${carta[1]+carta[4]}.png`;
