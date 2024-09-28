@@ -178,7 +178,7 @@ function compararValor(valor){
     }
     else{
 
-        if(buscaValor(carta,valor)){
+        if(buscaValor(carta,valor)||carta[1]+carta[4]==valor){
             ganadores.push(jugadores[turno]);
         }
 
